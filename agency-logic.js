@@ -243,5 +243,34 @@ if (slider && btnNext && btnPrev) {
 // Neural Core Parallax Logic Removed
 // Card Mouse Tracking Glow Logic Removed
 
+// Slot Counter Logic
+const slotCount = document.getElementById('slot-count');
+if (slotCount) {
+    let currentSlots = 9;
+    
+    const updateSlots = () => {
+        if (currentSlots > 3) {
+            currentSlots--;
+            slotCount.textContent = currentSlots.toString().padStart(2, '0');
+            
+            // Add a little punch animation on change
+            gsap.fromTo(slotCount, 
+                { scale: 1.5, opacity: 0.5 }, 
+                { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }
+            );
+        }
+    };
+
+    // Decrement slots at semi-random long intervals to simulate scarcity
+    const scheduleNextUpdate = () => {
+        const randomDelay = Math.random() * 15000 + 10000; // 10-25 seconds
+        setTimeout(() => {
+            updateSlots();
+            if (currentSlots > 3) scheduleNextUpdate();
+        }, randomDelay);
+    };
+
+    scheduleNextUpdate();
+}
 
 

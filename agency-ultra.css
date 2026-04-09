@@ -1887,12 +1887,20 @@ section {
 
 .terminal-status {
     font-family: var(--font-heading);
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 900;
-    color: var(--accent-blue);
-    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+    letter-spacing: 0.15em;
     position: relative;
     padding-left: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+#slot-count {
+    color: #ff5f56; /* Urgency Red/Orange */
+    font-size: 16px;
+    text-shadow: 0 0 15px rgba(255, 95, 86, 0.5);
+    margin-left: 5px;
 }
 
 .terminal-status::before {
