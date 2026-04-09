@@ -2738,6 +2738,10 @@ section {
         /* Hide initialize on small mobile to fit logo and toggle */
     }
 
+    .btn-form {
+        display: block !important;
+    }
+
     /* Typography Overrides */
     .hero-title {
         font-size: 32px;
