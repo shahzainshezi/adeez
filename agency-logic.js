@@ -209,15 +209,34 @@ if (slider && btnNext && btnPrev) {
     btnPrev.addEventListener('click', slidePrev);
 
     // Autoplay functionality
-    let autoplayInterval = setInterval(slideNext, 3000);
+    let autoplayInterval;
 
-    // Pause on hover
+    const startAutoplay = () => {
+        if (!autoplayInterval) {
+            autoplayInterval = setInterval(slideNext, 3000);
+        }
+    };
+
+    const stopAutoplay = () => {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    };
+
+    startAutoplay();
+
+    // Interaction controls (Pause on Hover & Touch)
     const wrapper = document.querySelector('.af-slider-wrapper');
     if (wrapper) {
-        wrapper.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-        wrapper.addEventListener('mouseleave', () => {
-            autoplayInterval = setInterval(slideNext, 3000);
-        });
+        // Desktop Hover
+        wrapper.addEventListener('mouseenter', stopAutoplay);
+        wrapper.addEventListener('mouseleave', startAutoplay);
+
+        // Mobile Touch
+        wrapper.addEventListener('touchstart', stopAutoplay, { passive: true });
+        wrapper.addEventListener('touchend', startAutoplay, { passive: true });
+        wrapper.addEventListener('touchcancel', startAutoplay, { passive: true });
     }
 }
 

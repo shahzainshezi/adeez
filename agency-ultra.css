@@ -2842,6 +2842,11 @@ section {
         margin-bottom: 0 !important;
     }
 
+    .neural-node,
+    .neural-hub-graph {
+        display: none !important;
+    }
+
     .stacked-services-container {
         padding-top: 0 !important;
         margin-top: 0 !important;
