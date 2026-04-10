@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "gsap": "^3.14.2",
-    "lucide": "^1.7.0"
+    "lucide": "^1.8.0"
   }
 }

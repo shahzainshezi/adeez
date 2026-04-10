@@ -1,59 +1,23 @@
 import './agency-ultra.css'
-import { createIcons, ArrowRight, ArrowLeft, PenTool, BarChart2, Target, PhoneCall, Zap, Cpu, Database, Sparkles, Activity, Plus, TrendingUp, Clock, Percent, CirclePlay, Star, Folder, Settings, ShieldCheck, Hexagon, Box, Triangle, Cloud, Video, Share2, Lock, Users, ClipboardList, FileEdit, Rocket, Trophy, Globe, Menu } from 'lucide';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize Lucide Icons
-createIcons({
-    icons: {
-        ArrowRight,
-        ArrowLeft,
-        PenTool,
-        BarChart2,
-        Target,
-        PhoneCall,
-        Zap,
-        Cpu,
-        Database,
-        Sparkles,
-        Activity,
-        Plus,
-        TrendingUp,
-        Clock,
-        Percent,
-        CirclePlay,
-        Star,
-        Folder,
-        Settings,
-        ShieldCheck,
-        Hexagon,
-        Box,
-        Triangle,
-        Cloud,
-        Video,
-        Share2,
-        Lock,
-        Users,
-        ClipboardList,
-        FileEdit,
-        Rocket,
-        Trophy,
-        Globe,
-        Menu
-    }
-});
+import { createIcons, icons } from 'lucide';
 
-// Navbar Scroll Effect
+createIcons({ icons });
+
+// Navbar Scroll Effect (GSAP properly triggered)
 const navbar = document.querySelector('.navbar-ai');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+if (navbar) {
+    ScrollTrigger.create({
+        trigger: 'body',
+        start: 'top -50px',
+        onEnter: () => navbar.classList.add('scrolled'),
+        onLeaveBack: () => navbar.classList.remove('scrolled'),
+    });
+}
 
 // Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle-ai');
