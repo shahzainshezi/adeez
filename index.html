@@ -24,8 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-I0N6hpdD.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BwroMrVX.css">
+  <script type="module" crossorigin src="./assets/index-CiTnhv8U.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DtyCi2ld.css">
 </head>
 
 <body class="dark-theme">
@@ -539,57 +539,34 @@
             </div>
         </section>
 
-        <!-- HOLOGRAPHIC AI VOICE PLAYER -->
-        <section id="voice-portfolio" class="hologram-player-section">
-            <div class="holo-container">
-                <div class="section-header center" style="margin-bottom: 40px; position:relative; z-index:20;">
-                    <span class="section-label">AI Voice Hub</span>
-                    <h2 class="section-h">The Sound of the <span class="gradient-text">Future</span></h2>
-                    <p class="section-p">Realistic AI voices that qualify leads, handle inquiries, and represent your
-                        brand 24/7.</p>
-                </div>
-
-                <div class="holo-player-wrapper">
-                    <!-- Flare simulating the webbed join -->
-                    <div class="holo-flare"></div>
-
-                    <!-- Horizontal Band -->
-                    <div class="holo-band">
-                        <div class="hb-left">
-                            <button class="hb-btn" onclick="vpPrevTrack()"><i data-lucide="skip-back"></i></button>
-                            <button class="hb-btn hb-play" id="vp-play-main" onclick="vpTogglePlay()">
-                                <i data-lucide="play" id="vp-icon-play" fill="currentColor"></i>
-                                <i data-lucide="pause" id="vp-icon-pause" fill="currentColor"
-                                    style="display: none;"></i>
-                            </button>
-                            <button class="hb-btn" onclick="vpNextTrack()"><i data-lucide="skip-forward"></i></button>
-                        </div>
-
-                        <div class="hb-waveform left" id="vp-wave-l"></div>
-                        <div class="hb-center-space"></div>
-                        <div class="hb-waveform right" id="vp-wave-r"></div>
-
-                        <div class="hb-right">
-                            <button class="hb-btn" onclick="vpPrevTrack()"><i data-lucide="skip-back"></i></button>
-                            <button class="hb-btn hb-heart"><i data-lucide="heart" fill="currentColor"></i></button>
-                            <button class="hb-btn" onclick="vpNextTrack()"><i data-lucide="skip-forward"></i></button>
+        <!-- HOLOGRAPHIC AI VOICE PLAYER (V3) -->
+        <section id="voice-portfolio" class="vh3-section">
+            <div class="container">
+                <div class="vh3-grid">
+                    <!-- Column 1: Text Content -->
+                    <div class="vh3-text-col">
+                        <span class="section-label">AI Voice Hub</span>
+                        <h2 class="section-h text-left">The Sound of the <span class="gradient-text">Future</span></h2>
+                        <p class="section-p text-left" style="margin: 0;">Realistic AI voices that qualify leads, handle inquiries, and represent your brand 24/7. Listen to our agents demonstrating human-like empathy and precision across various call scenarios.</p>
+                        <br>
+                        <div class="vh3-features">
+                            <div class="v3-feat"><i data-lucide="zap"></i> Instant Response</div>
+                            <div class="v3-feat"><i data-lucide="heart"></i> Human Empathy</div>
+                            <div class="v3-feat"><i data-lucide="globe"></i> Multilingual</div>
                         </div>
                     </div>
 
-                    <!-- Arch Menu -->
-                    <div class="holo-arc" id="vp-arc-menu">
-                        <!-- Items injected by JS -->
-                    </div>
-
-                    <!-- Central Orb -->
-                    <div class="holo-orb">
-                        <div class="ho-ring outer"></div>
-                        <div class="ho-ring inner">
-                            <div class="ho-dot"></div>
-                            <div class="ho-dot dot-2"></div>
+                    <!-- Column 2: Player Interface (Avatar + Playlist) -->
+                    <div class="vh3-player-col">
+                        <div class="vh3-avatar">
+                            <div class="v3-ring v3-outer"></div>
+                            <div class="v3-ring v3-inner"></div>
+                            <img src="./ai_headphone_bot.png" alt="AI Agent">
                         </div>
-                        <img src="./ai_voice_core_hologram.png" alt="AI Agent" class="ho-avatar">
-                        <div class="ho-timer" id="vp-timer">0:00 / 0:00</div>
+                        
+                        <div class="vh3-playlist" id="vh3-playlist-container">
+                            <!-- Dynamically injected by JS -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1255,122 +1232,96 @@
             }
         };
 
-        // HOLOGRAPHIC AI VOICE PLAYER LOGIC
+        // V3 AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "01", title: "CALL RECORDING", file: "/sample_audio.mp3" },
-            { id: "02", title: "CALL RECORDING", file: "/sample_audio.mp3" },
-            { id: "03", title: "CALL RECORDING", file: "/sample_audio.mp3" },
-            { id: "04", title: "CALL RECORDING", file: "/sample_audio.mp3" },
-            { id: "05", title: "CALL RECORDING", file: "/sample_audio.mp3" },
-            { id: "06", title: "CALL RECORDING", file: "/sample_audio.mp3" }
+            { id: "01", title: "Call Recording 01", sub: "Qualifying a personal injury lead", file: "/sample_audio.mp3" },
+            { id: "02", title: "Call Recording 02", sub: "Booking a dental appointment", file: "/sample_audio.mp3" },
+            { id: "03", title: "Call Recording 03", sub: "Handling an irate customer gracefully", file: "/sample_audio.mp3" },
+            { id: "04", title: "Call Recording 04", sub: "Following up on a missed call", file: "/sample_audio.mp3" },
+            { id: "05", title: "Call Recording 05", sub: "Multilingual Spanish intake", file: "/sample_audio.mp3" }
         ];
 
         let vpCurrentTrackIndex = 0;
         let vpIsPlaying = false;
-        const vpTotalBarsPerSide = 30;
-        let vpWaveformDataL = [];
-        let vpWaveformDataR = [];
-
-        const elTimer = document.getElementById('vp-timer');
-        const elPlayBtn = document.getElementById('vp-play-main');
-        const elWaveL = document.getElementById('vp-wave-l');
-        const elWaveR = document.getElementById('vp-wave-r');
-        const elArcMenu = document.getElementById('vp-arc-menu');
-
-        // Setup Audio Element
+        
+        const elPlaylist = document.getElementById('vh3-playlist-container');
         const vpAudio = new Audio();
         vpAudio.src = vpTracks[0].file;
+        let vh3WaveTimer = null;
 
-        function vpFormatTime(sec) {
-            if (isNaN(sec)) return "0:00";
-            const min = Math.floor(sec / 60);
-            const s = Math.floor(sec % 60).toString().padStart(2, '0');
-            return `${min}:${s}`;
-        }
-
-        function vpGenerateWaveform() {
-            vpWaveformDataL = [];
-            vpWaveformDataR = [];
-            for (let i = 0; i < vpTotalBarsPerSide; i++) {
-                vpWaveformDataL.push(10 + Math.random() * 80);
-                vpWaveformDataR.push(10 + Math.random() * 80);
-            }
-        }
-
-        function vpRenderWaveform() {
-            if (!vpIsPlaying) return;
-            elWaveL.innerHTML = '';
-            elWaveR.innerHTML = '';
-            for (let i = 0; i < vpTotalBarsPerSide; i++) {
-                let pctL = (i / vpTotalBarsPerSide);
-                let hl = vpWaveformDataL[i] * (0.2 + pctL * 0.8) * (0.8 + Math.random() * 0.4);
-
-                let pctR = 1 - (i / vpTotalBarsPerSide);
-                let hr = vpWaveformDataR[i] * (0.2 + pctR * 0.8) * (0.8 + Math.random() * 0.4);
-
-                if (hl > 100) hl = 100;
-                if (hr > 100) hr = 100;
-
-                const bL = document.createElement('div');
-                bL.className = 'hw-bar';
-                bL.style.height = `${hl}%`;
-                elWaveL.appendChild(bL);
-
-                const bR = document.createElement('div');
-                bR.className = 'hw-bar';
-                bR.style.height = `${hr}%`;
-                elWaveR.appendChild(bR);
-            }
-        }
-
-        function vpRenderArc() {
-            elArcMenu.innerHTML = '';
-            // 6 angles distributed around the top arc
-            const angles = [-50, -30, -10, 10, 30, 50];
+        function vpRenderPlaylist() {
+            elPlaylist.innerHTML = '';
             vpTracks.forEach((tk, idx) => {
+                const isActive = (idx === vpCurrentTrackIndex);
+                
                 const item = document.createElement('div');
-                item.className = 'holo-arc-item' + (idx === vpCurrentTrackIndex ? ' active' : '');
-                item.style.setProperty('--rot', angles[idx] + 'deg');
-                item.innerHTML = `<span class="ha-num">${tk.id}</span><span class="ha-text">${tk.title}</span>`;
+                item.className = 'vh3-pill' + (isActive ? ' active' : '');
+                
+                // Play Icon Container
+                const playCircle = document.createElement('div');
+                playCircle.className = 'vh3-play-circle';
+                playCircle.innerHTML = `<i data-lucide="${isActive && vpIsPlaying ? 'pause' : 'play'}" fill="currentColor"></i>`;
+                
+                // Waveform Container
+                const waveContainer = document.createElement('div');
+                waveContainer.className = 'vh3-wave';
+                for(let i=0; i<25; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'vh3-bar';
+                    // Generate random static height for inactive, random dynamic for active
+                    const baseH = isActive && vpIsPlaying ? (20 + Math.random() * 80) : (10 + Math.random() * 30);
+                    bar.style.height = `${baseH}%`;
+                    waveContainer.appendChild(bar);
+                }
+
+                if (isActive) item.classList.add('vh3-has-active-wave');
+
+                // Text Container
+                const textContainer = document.createElement('div');
+                textContainer.className = 'vh3-text';
+                textContainer.innerHTML = `<div class="vh3-title">${tk.title}</div><div class="vh3-sub">${tk.sub}</div>`;
+
+                item.appendChild(playCircle);
+                item.appendChild(waveContainer);
+                item.appendChild(textContainer);
+
                 item.addEventListener('click', () => {
-                    vpCurrentTrackIndex = idx;
-                    vpLoadTrack();
-                    vpAudio.play().then(() => { vpIsPlaying = true; vpUpdateDisplay(); });
+                    if(vpCurrentTrackIndex === idx) {
+                        vpTogglePlay();
+                    } else {
+                        vpCurrentTrackIndex = idx;
+                        vpLoadTrack();
+                        vpAudio.play().then(() => { vpIsPlaying = true; vpRenderPlaylist(); lucide.createIcons(); });
+                    }
                 });
-                elArcMenu.appendChild(item);
+
+                elPlaylist.appendChild(item);
             });
+            lucide.createIcons();
         }
 
         function vpLoadTrack() {
             vpAudio.src = vpTracks[vpCurrentTrackIndex].file;
             vpAudio.load();
-            vpGenerateWaveform();
-            vpRenderArc();
-            vpUpdateDisplay();
+            vpGenerateStaticWave();
         }
 
-        function vpUpdateDisplay() {
-            const currentTime = vpAudio.currentTime || 0;
-            const duration = vpAudio.duration || 0;
-
-            elTimer.textContent = `${vpFormatTime(currentTime)} / ${vpFormatTime(duration)}`;
-
-            const iconPlay = document.getElementById('vp-icon-play');
-            const iconPause = document.getElementById('vp-icon-pause');
-
-            if (vpIsPlaying) {
-                if (iconPlay) iconPlay.style.display = 'none';
-                if (iconPause) iconPause.style.display = 'block';
-            } else {
-                if (iconPlay) iconPlay.style.display = 'block';
-                if (iconPause) iconPause.style.display = 'none';
-
-                elWaveL.innerHTML = ''; elWaveR.innerHTML = '';
-                for (let i = 0; i < vpTotalBarsPerSide; i++) {
-                    const b = document.createElement('div'); b.className = 'hw-bar'; b.style.height = '10%';
-                    elWaveL.appendChild(b.cloneNode());
-                    elWaveR.appendChild(b.cloneNode());
-                }
+        function vpGenerateStaticWave() {
+            vpRenderPlaylist();
+            
+            clearInterval(vh3WaveTimer);
+            if(vpIsPlaying) {
+                vh3WaveTimer = setInterval(() => {
+                    const activePill = document.querySelector('.vh3-pill.active .vh3-wave');
+                    if(activePill) {
+                        Array.from(activePill.children).forEach((bar, i) => {
+                            // Parabolic easing with randomness to simulate voice
+                            let pct = i / 25;
+                            let height = (Math.sin(pct * Math.PI) * 50) + (Math.random() * 50);
+                            bar.style.height = `${height}%`;
+                        });
+                    }
+                }, 150);
             }
         }
 
@@ -1378,47 +1329,27 @@
             if (vpAudio.paused) {
                 vpAudio.play().then(() => {
                     vpIsPlaying = true;
-                    vpUpdateDisplay();
+                    vpGenerateStaticWave();
                 });
             } else {
                 vpAudio.pause();
                 vpIsPlaying = false;
-                vpUpdateDisplay();
+                vpGenerateStaticWave();
             }
         }
 
         window.vpNextTrack = function () {
             vpCurrentTrackIndex = (vpCurrentTrackIndex + 1) % vpTracks.length;
             vpLoadTrack();
-            if (vpIsPlaying) vpAudio.play();
+            if (vpIsPlaying) vpAudio.play().then(() => vpGenerateStaticWave());
         }
 
-        window.vpPrevTrack = function () {
-            vpCurrentTrackIndex = (vpCurrentTrackIndex - 1 + vpTracks.length) % vpTracks.length;
-            vpLoadTrack();
-            if (vpIsPlaying) vpAudio.play();
-        }
-
-        // Event Listeners for Audio element
-        vpAudio.addEventListener('timeupdate', () => {
-            if (vpIsPlaying && Math.floor(vpAudio.currentTime * 4) % 4 === 0) {
-                vpUpdateDisplay();
-            }
-        });
-
-        vpAudio.addEventListener('loadedmetadata', vpUpdateDisplay);
         vpAudio.addEventListener('ended', window.vpNextTrack);
-
-        setInterval(() => {
-            if (vpIsPlaying) {
-                vpRenderWaveform();
-            }
-        }, 250);
 
         document.addEventListener('DOMContentLoaded', () => {
             vpLoadTrack();
             vpIsPlaying = false;
-            vpUpdateDisplay();
+            vpRenderPlaylist();
         });
 
         // Logic to scroll carousel
