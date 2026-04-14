@@ -1347,11 +1347,10 @@
             
             elTimer.textContent = `${vpFormatTime(currentTime)} / ${vpFormatTime(duration)}`;
             
-            const icon = elPlayBtn.querySelector('i');
             if (vpIsPlaying) {
-                icon.setAttribute('data-lucide', 'pause');
+                elPlayBtn.innerHTML = '<i data-lucide="pause" fill="currentColor"></i>';
             } else {
-                icon.setAttribute('data-lucide', 'play');
+                elPlayBtn.innerHTML = '<i data-lucide="play" fill="currentColor"></i>';
                 elWaveL.innerHTML = ''; elWaveR.innerHTML = '';
                 for(let i=0; i<vpTotalBarsPerSide; i++) {
                    const b = document.createElement('div'); b.className = 'hw-bar'; b.style.height = '10%';
