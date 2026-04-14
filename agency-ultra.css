@@ -3908,34 +3908,79 @@ section {
 }
 
 @media (max-width: 600px) {
-    .holo-band {
-        border: none;
-        background: none;
-        flex-direction: column;
-        top: auto;
-        bottom: 0;
-        transform: translateX(-50%);
-        height: auto;
-        gap: 20px;
-    }
-
-    .hb-center-space,
-    .hb-waveform {
-        display: none;
-    }
-
     .holo-player-wrapper {
-        height: 650px;
-        align-items: flex-start;
-        margin-top: 80px;
-    }
-
-    .holo-orb {
-        top: 0;
-        transform: translateX(-50%);
+        height: 550px;
+        margin-top: 20px;
     }
 
     .holo-arc {
-        top: 0;
+        width: 300px;
+        height: 300px;
+        top: 40%;
+    }
+
+    .holo-arc-item {
+        height: 170px;
+    }
+
+    .ha-text {
+        font-size: 11px;
+    }
+    
+    .ha-num {
+        font-size: 11px;
+    }
+
+    .holo-orb {
+        width: 200px;
+        height: 200px;
+        top: 40%;
+    }
+
+    .ho-ring.inner {
+        width: 180px;
+        height: 180px;
+    }
+
+    .ho-avatar {
+        width: 170px;
+        height: 170px;
+    }
+
+    .ho-timer {
+        bottom: -25px;
+        font-size: 11px;
+    }
+
+    .holo-band {
+        top: 85%;
+        height: auto;
+        background: none;
+        border: none;
+        padding: 0;
+        width: 100vw;
+        gap: 15px;
+    }
+
+    .hb-center-space,
+    .hb-waveform,
+    .holo-flare {
+        display: none;
+    }
+
+    .hb-left {
+        margin-right: 5px;
+        gap: 10px;
+    }
+
+    .hb-right {
+        margin-left: 5px;
+        gap: 10px;
+    }
+    
+    .hb-play,
+    .hb-heart {
+        width: 50px;
+        height: 50px;
     }
 }
