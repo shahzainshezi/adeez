@@ -1233,11 +1233,11 @@
 
         // V3 AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "01", title: "Call Recording 01", sub: "Qualifying a personal injury lead", file: "/sample_audio.mp3" },
-            { id: "02", title: "Call Recording 02", sub: "Booking a dental appointment", file: "/sample_audio.mp3" },
-            { id: "03", title: "Call Recording 03", sub: "Handling an irate customer gracefully", file: "/sample_audio.mp3" },
-            { id: "04", title: "Call Recording 04", sub: "Following up on a missed call", file: "/sample_audio.mp3" },
-            { id: "05", title: "Call Recording 05", sub: "Multilingual Spanish intake", file: "/sample_audio.mp3" }
+            { id: "01", title: "Call Recording 01", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
+            { id: "02", title: "Call Recording 02", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
+            { id: "03", title: "Call Recording 03", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
+            { id: "04", title: "Call Recording 04", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
+            { id: "05", title: "Call Recording 05", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" }
         ];
 
         let vpCurrentTrackIndex = 0;
@@ -1264,11 +1264,13 @@
                 // Waveform Container
                 const waveContainer = document.createElement('div');
                 waveContainer.className = 'vh3-wave';
-                for(let i=0; i<25; i++) {
+                for(let i=0; i<30; i++) {
                     const bar = document.createElement('div');
                     bar.className = 'vh3-bar';
-                    // Generate random static height for inactive, random dynamic for active
-                    const baseH = isActive && vpIsPlaying ? (20 + Math.random() * 80) : (10 + Math.random() * 30);
+                    // Generate a full looking static shape that closely matches the photo
+                    const pct = i/30;
+                    const curve = Math.sin(pct * Math.PI); // Bump in the middle
+                    const baseH = (curve * 50) + (10 + Math.random() * 40); 
                     bar.style.height = `${baseH}%`;
                     waveContainer.appendChild(bar);
                 }
