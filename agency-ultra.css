@@ -3998,3 +3998,250 @@ section {
         height: 50px;
     }
 }
+
+/* ================================
+   AI VOICE HUB (V3 PILL DESIGN)
+   ================================ */
+
+.vh3-section {
+    padding: 100px 0;
+    position: relative;
+    background: transparent;
+    color: #fff;
+    overflow: hidden;
+}
+
+.vh3-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Column 1: Text */
+.vh3-text-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.vh3-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.v3-feat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.v3-feat i {
+    color: var(--accent-blue);
+    width: 20px;
+}
+
+/* Column 2: Player */
+.vh3-player-col {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Avatar Side */
+.vh3-avatar {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.v3-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.v3-ring.v3-outer {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(0, 131, 239, 0.3);
+    box-shadow: 0 0 30px rgba(0, 131, 239, 0.1), inset 0 0 30px rgba(0, 131, 239, 0.1);
+    animation: ho-spin 20s linear infinite;
+}
+
+.v3-ring.v3-inner {
+    width: 240px;
+    height: 240px;
+    border: 3px solid rgba(0, 200, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.3), inset 0 0 20px rgba(0, 200, 255, 0.3);
+    animation: ho-spin 15s linear infinite reverse;
+}
+
+.vh3-avatar img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 0 40px rgba(0, 131, 239, 0.3);
+}
+
+/* Playlist Side */
+.vh3-playlist {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.vh3-pill {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 131, 239, 0.05);
+    border: 1px solid rgba(0, 131, 239, 0.2);
+    border-radius: 40px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.vh3-pill:hover {
+    background: rgba(0, 131, 239, 0.1);
+    border-color: rgba(0, 131, 239, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 131, 239, 0.1);
+}
+
+.vh3-pill.active {
+    background: rgba(0, 131, 239, 0.15);
+    border-color: rgba(0, 200, 255, 0.6);
+    box-shadow: 
+        0 0 20px rgba(0, 131, 239, 0.2), 
+        inset 0 0 10px rgba(0, 131, 239, 0.1),
+        0 2px 0 rgba(0, 200, 255, 0.6) inset,
+        0 -2px 0 rgba(0, 200, 255, 0.6) inset;
+}
+
+/* Play Circle */
+.vh3-play-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(0, 200, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.vh3-pill.active .vh3-play-circle {
+    background: rgba(0, 200, 255, 0.2);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    box-shadow: 0 0 10px rgba(0, 200, 255, 0.4);
+}
+
+.vh3-play-circle i {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+}
+.vh3-pill.active .vh3-play-circle i {
+    margin-left: 0;
+}
+
+/* Waveform inside Pill */
+.vh3-wave {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 30px;
+    min-width: 60px;
+    flex: 1;
+}
+
+.vh3-bar {
+    width: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    transition: height 0.1s ease-out;
+}
+
+.vh3-has-active-wave .vh3-bar {
+    background: var(--accent-blue);
+    box-shadow: 0 0 5px var(--accent-blue);
+}
+
+/* Track Info */
+.vh3-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    text-align: right;
+}
+
+.vh3-title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.vh3-sub {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vh3-pill.active .vh3-title {
+    color: var(--accent-blue);
+}
+
+/* Responses for Mobile */
+@media (max-width: 991px) {
+    .vh3-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .vh3-player-col {
+        flex-direction: column;
+        align-items: center;
+    }
+    .vh3-text {
+        text-align: left;
+        margin-left: 0;
+    }
+    .vh3-title { font-size: 12px; }
+    .vh3-playlist {
+        width: 100%;
+        max-width: 500px;
+    }
+    .vh3-wave { justify-content: flex-end; margin-right: 15px; }
+}
+
+@media (max-width: 600px) {
+    .vh3-avatar {
+        width: 200px;
+        height: 200px;
+    }
+    .v3-ring.v3-inner { width: 170px; height: 170px; }
+    .vh3-avatar img { width: 150px; height: 150px; }
+    .vh3-pill { padding: 10px 15px; }
+    .vh3-sub { display: none; } /* Hide sub on very small devices */
+}
