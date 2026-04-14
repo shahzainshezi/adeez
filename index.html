@@ -24,8 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-Dmh3Kp4s.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Cyu1gv-7.css">
+  <script type="module" crossorigin src="./assets/index-I0N6hpdD.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BwroMrVX.css">
 </head>
 
 <body class="dark-theme">
@@ -545,7 +545,8 @@
                 <div class="section-header center" style="margin-bottom: 40px; position:relative; z-index:20;">
                     <span class="section-label">AI Voice Hub</span>
                     <h2 class="section-h">The Sound of the <span class="gradient-text">Future</span></h2>
-                    <p class="section-p">Realistic AI voices that qualify leads, handle inquiries, and represent your brand 24/7.</p>
+                    <p class="section-p">Realistic AI voices that qualify leads, handle inquiries, and represent your
+                        brand 24/7.</p>
                 </div>
 
                 <div class="holo-player-wrapper">
@@ -558,11 +559,12 @@
                             <button class="hb-btn" onclick="vpPrevTrack()"><i data-lucide="skip-back"></i></button>
                             <button class="hb-btn hb-play" id="vp-play-main" onclick="vpTogglePlay()">
                                 <i data-lucide="play" id="vp-icon-play" fill="currentColor"></i>
-                                <i data-lucide="pause" id="vp-icon-pause" fill="currentColor" style="display: none;"></i>
+                                <i data-lucide="pause" id="vp-icon-pause" fill="currentColor"
+                                    style="display: none;"></i>
                             </button>
                             <button class="hb-btn" onclick="vpNextTrack()"><i data-lucide="skip-forward"></i></button>
                         </div>
-                        
+
                         <div class="hb-waveform left" id="vp-wave-l"></div>
                         <div class="hb-center-space"></div>
                         <div class="hb-waveform right" id="vp-wave-r"></div>
@@ -584,6 +586,7 @@
                         <div class="ho-ring outer"></div>
                         <div class="ho-ring inner">
                             <div class="ho-dot"></div>
+                            <div class="ho-dot dot-2"></div>
                         </div>
                         <img src="./ai_voice_core_hologram.png" alt="AI Agent" class="ho-avatar">
                         <div class="ho-timer" id="vp-timer">0:00 / 0:00</div>
@@ -1181,7 +1184,8 @@
                     <ul class="footer-link-list contact-list">
                         <li><a href="mailto:hello@adeeze.com"><i data-lucide="mail"></i> hello@adeeze.com</a></li>
                         <li><a href="#"><i data-lucide="phone"></i> +1 (208) 998-6888</a></li>
-                        <li><a href="#"><i data-lucide="map-pin"></i> 539 W. Commerce St #7865 Dallas TX 75208 USA</a></li>
+                        <li><a href="#"><i data-lucide="map-pin"></i> 539 W. Commerce St #7865 Dallas TX 75208 USA</a>
+                        </li>
                         <li><a href="#"><i data-lucide="help-circle"></i> Support Hub</a></li>
                     </ul>
                 </div>
@@ -1253,12 +1257,12 @@
 
         // HOLOGRAPHIC AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "01", title: "CALL RECORDING 001", file: "/sample_audio.mp3" },
-            { id: "02", title: "CALL RECORDING 002", file: "/sample_audio.mp3" },
-            { id: "03", title: "CALL RECORDING 003", file: "/sample_audio.mp3" },
-            { id: "04", title: "CALL RECORDING 004", file: "/sample_audio.mp3" },
-            { id: "05", title: "CALL RECORDING 005", file: "/sample_audio.mp3" },
-            { id: "06", title: "CALL RECORDING 006", file: "/sample_audio.mp3" }
+            { id: "01", title: "CALL RECORDING", file: "/sample_audio.mp3" },
+            { id: "02", title: "CALL RECORDING", file: "/sample_audio.mp3" },
+            { id: "03", title: "CALL RECORDING", file: "/sample_audio.mp3" },
+            { id: "04", title: "CALL RECORDING", file: "/sample_audio.mp3" },
+            { id: "05", title: "CALL RECORDING", file: "/sample_audio.mp3" },
+            { id: "06", title: "CALL RECORDING", file: "/sample_audio.mp3" }
         ];
 
         let vpCurrentTrackIndex = 0;
@@ -1272,7 +1276,7 @@
         const elWaveL = document.getElementById('vp-wave-l');
         const elWaveR = document.getElementById('vp-wave-r');
         const elArcMenu = document.getElementById('vp-arc-menu');
-        
+
         // Setup Audio Element
         const vpAudio = new Audio();
         vpAudio.src = vpTracks[0].file;
@@ -1288,24 +1292,24 @@
             vpWaveformDataL = [];
             vpWaveformDataR = [];
             for (let i = 0; i < vpTotalBarsPerSide; i++) {
-                vpWaveformDataL.push( 10 + Math.random() * 80 );
-                vpWaveformDataR.push( 10 + Math.random() * 80 );
+                vpWaveformDataL.push(10 + Math.random() * 80);
+                vpWaveformDataR.push(10 + Math.random() * 80);
             }
         }
 
         function vpRenderWaveform() {
-            if(!vpIsPlaying) return; 
+            if (!vpIsPlaying) return;
             elWaveL.innerHTML = '';
             elWaveR.innerHTML = '';
             for (let i = 0; i < vpTotalBarsPerSide; i++) {
                 let pctL = (i / vpTotalBarsPerSide);
                 let hl = vpWaveformDataL[i] * (0.2 + pctL * 0.8) * (0.8 + Math.random() * 0.4);
-                
+
                 let pctR = 1 - (i / vpTotalBarsPerSide);
                 let hr = vpWaveformDataR[i] * (0.2 + pctR * 0.8) * (0.8 + Math.random() * 0.4);
 
-                if(hl > 100) hl = 100;
-                if(hr > 100) hr = 100;
+                if (hl > 100) hl = 100;
+                if (hr > 100) hr = 100;
 
                 const bL = document.createElement('div');
                 bL.className = 'hw-bar';
@@ -1348,29 +1352,29 @@
         function vpUpdateDisplay() {
             const currentTime = vpAudio.currentTime || 0;
             const duration = vpAudio.duration || 0;
-            
+
             elTimer.textContent = `${vpFormatTime(currentTime)} / ${vpFormatTime(duration)}`;
-            
+
             const iconPlay = document.getElementById('vp-icon-play');
             const iconPause = document.getElementById('vp-icon-pause');
 
             if (vpIsPlaying) {
-                if(iconPlay) iconPlay.style.display = 'none';
-                if(iconPause) iconPause.style.display = 'block';
+                if (iconPlay) iconPlay.style.display = 'none';
+                if (iconPause) iconPause.style.display = 'block';
             } else {
-                if(iconPlay) iconPlay.style.display = 'block';
-                if(iconPause) iconPause.style.display = 'none';
-                
+                if (iconPlay) iconPlay.style.display = 'block';
+                if (iconPause) iconPause.style.display = 'none';
+
                 elWaveL.innerHTML = ''; elWaveR.innerHTML = '';
-                for(let i=0; i<vpTotalBarsPerSide; i++) {
-                   const b = document.createElement('div'); b.className = 'hw-bar'; b.style.height = '10%';
-                   elWaveL.appendChild(b.cloneNode());
-                   elWaveR.appendChild(b.cloneNode());
+                for (let i = 0; i < vpTotalBarsPerSide; i++) {
+                    const b = document.createElement('div'); b.className = 'hw-bar'; b.style.height = '10%';
+                    elWaveL.appendChild(b.cloneNode());
+                    elWaveR.appendChild(b.cloneNode());
                 }
             }
         }
 
-        window.vpTogglePlay = function() {
+        window.vpTogglePlay = function () {
             if (vpAudio.paused) {
                 vpAudio.play().then(() => {
                     vpIsPlaying = true;
@@ -1383,13 +1387,13 @@
             }
         }
 
-        window.vpNextTrack = function() {
+        window.vpNextTrack = function () {
             vpCurrentTrackIndex = (vpCurrentTrackIndex + 1) % vpTracks.length;
             vpLoadTrack();
             if (vpIsPlaying) vpAudio.play();
         }
 
-        window.vpPrevTrack = function() {
+        window.vpPrevTrack = function () {
             vpCurrentTrackIndex = (vpCurrentTrackIndex - 1 + vpTracks.length) % vpTracks.length;
             vpLoadTrack();
             if (vpIsPlaying) vpAudio.play();
@@ -1397,11 +1401,11 @@
 
         // Event Listeners for Audio element
         vpAudio.addEventListener('timeupdate', () => {
-            if(vpIsPlaying && Math.floor(vpAudio.currentTime * 4) % 4 === 0) {
+            if (vpIsPlaying && Math.floor(vpAudio.currentTime * 4) % 4 === 0) {
                 vpUpdateDisplay();
             }
         });
-        
+
         vpAudio.addEventListener('loadedmetadata', vpUpdateDisplay);
         vpAudio.addEventListener('ended', window.vpNextTrack);
 
@@ -1413,7 +1417,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             vpLoadTrack();
-            vpIsPlaying = false; 
+            vpIsPlaying = false;
             vpUpdateDisplay();
         });
 
@@ -1423,7 +1427,7 @@
             if (!carousel) return;
             const cardWidth = carousel.querySelector('.impact-card').offsetWidth;
             const scrollAmount = (cardWidth + 30) * direction; // width + gap
-            
+
             // Check for loop
             const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
             const isAtStart = carousel.scrollLeft <= 5;
