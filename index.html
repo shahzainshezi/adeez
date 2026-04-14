@@ -22,10 +22,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Unbounded:wght@400;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-DKBbPtRK.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BpzjVEA0.css">
+  <script type="module" crossorigin src="./assets/index-CawgOtkW.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-B4KEmN2B.css">
 </head>
 
 <body class="dark-theme">
@@ -539,125 +539,57 @@
             </div>
         </section>
 
-        <!-- AI VOICE PORTFOLIO SECTION -->
-        <section id="voice-portfolio" class="voice-portfolio-section">
-            <div class="container text-center">
-                <div class="section-header center">
-                    <span class="section-label">AI Voice Hub</span>
-                    <h2 class="section-h">The Sound of the <span class="gradient-text">Future</span></h2>
-                    <p class="section-p">Realistic AI voices that qualify leads, handle inquiries, and represent your
-                        brand 24/7.</p>
+        <!-- AI VOICE PORTFOLIO SECTION V2 -->
+        <section id="voice-portfolio" class="voice-portfolio-v2">
+            <div class="vp-app">
+                <!-- Top Section -->
+                <div class="vp-top">
+                    <div class="vp-badge">
+                        <span class="vp-dot"></span> AI VOICE AGENT
+                    </div>
+                    <div class="vp-label">CALL RECORDINGS</div>
                 </div>
-            </div>
 
-            <div class="voice-portfolio-container">
-                <!-- Arc Menu -->
-                <div class="voice-arc-menu">
-                    <div class="arc-label label-1">
-                        <div class="label-content">
-                            <span class="label-num">12</span>
-                            <span class="label-text">CALL RECORDING 001</span>
-                        </div>
-                    </div>
-                    <div class="arc-label label-2">
-                        <div class="label-content">
-                            <span class="label-num">12</span>
-                            <span class="label-text">CALL RECORDING 001</span>
-                        </div>
-                    </div>
-                    <div class="arc-label label-3 active">
-                        <div class="label-content">
-                            <span class="label-num">01</span>
-                            <span class="label-text">CALL RECORDING 002</span>
-                        </div>
-                    </div>
-                    <div class="arc-label label-4">
-                        <div class="label-content">
-                            <span class="label-num">02</span>
-                            <span class="label-text">CALL RECORDING 003</span>
-                        </div>
-                    </div>
-                    <div class="arc-label label-5">
-                        <div class="label-content">
-                            <span class="label-num">03</span>
-                            <span class="label-text">CALL RECORDING 003</span>
-                        </div>
+                <!-- Avatar Section -->
+                <div class="vp-avatar-wrapper">
+                    <div class="vp-ring vp-ring-1"></div>
+                    <div class="vp-ring vp-ring-2"></div>
+                    <div class="vp-avatar">
+                        <i data-lucide="bot" class="vp-bot-icon"></i>
                     </div>
                 </div>
 
-                <!-- Core Player Area -->
-                <div class="voice-core-wrap">
-                    <div class="aura-glow"></div>
-                    <div class="voice-aura-rings">
-                        <div class="aura-ring inner"></div>
-                        <div class="aura-ring outer"></div>
-                    </div>
-
-                    <!-- Waveforms -->
-                    <div class="voice-waveform left">
-                        <div class="wave-bar" style="animation-delay: 0.1s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.3s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.6s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.2s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.4s"></div>
-                    </div>
-
-                    <img src="./ai_voice_core_hologram.png" alt="AI Core Hologram" class="voice-core-image">
-
-                    <div class="voice-waveform right">
-                        <div class="wave-bar" style="animation-delay: 0.5s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.2s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.7s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.1s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.4s"></div>
-                    </div>
-
-                    <!-- Time -->
-                    <div class="voice-time">2:00 / 5:00</div>
+                <!-- Track Info -->
+                <div class="vp-track-info">
+                    <h3 class="vp-track-title" id="vp-h-title">Call Recording 001</h3>
+                    <p class="vp-track-meta" id="vp-h-meta">CLIENT INTAKE • PERSONAL INJURY</p>
                 </div>
 
-                <!-- Horizontal Controls -->
-                <div class="audio-player-controls">
-                    <div class="player-side left">
-                        <button class="p-btn"><i data-lucide="skip-back"></i></button>
-                        <button class="p-btn play-main" onclick="togglePlayVoice()"><i data-lucide="play" fill="currentColor"></i></button>
-                        <button class="p-btn"><i data-lucide="skip-forward"></i></button>
-                    </div>
+                <!-- Waveform -->
+                <div class="vp-waveform-container" id="vp-waveform">
+                    <!-- Bars injected by JS -->
+                </div>
+                <div class="vp-time-row">
+                    <span id="vp-time-current">0:00</span>
+                    <span id="vp-time-total">0:00</span>
+                </div>
 
-                    <div class="player-side right">
-                        <button class="p-btn"><i data-lucide="volume-2"></i></button>
-                        <button class="p-btn heart active"><i data-lucide="heart" fill="currentColor"></i></button>
-                        <button class="p-btn"><i data-lucide="maximize-2"></i></button>
-                    </div>
+                <!-- Controls -->
+                <div class="vp-controls">
+                    <button class="vp-ctrl-btn" id="vp-prev"><i data-lucide="skip-back"></i></button>
+                    <button class="vp-ctrl-btn" id="vp-rw"><i data-lucide="rewind"></i></button>
+                    <button class="vp-ctrl-btn vp-play-bg" id="vp-play-pause"><i data-lucide="play" fill="currentColor"></i></button>
+                    <button class="vp-ctrl-btn" id="vp-ff"><i data-lucide="fast-forward"></i></button>
+                    <button class="vp-ctrl-btn" id="vp-next"><i data-lucide="skip-forward"></i></button>
+                </div>
+
+                <!-- Playlist -->
+                <div class="vp-playlist" id="vp-playlist">
+                    <!-- Items injected by JS -->
                 </div>
             </div>
         </section>
 
-        <script>
-            function selectVoiceTrack(el) {
-                document.querySelectorAll('.arc-label').forEach(label => label.classList.remove('active'));
-                el.classList.add('active');
-            }
-
-            function togglePlayVoice() {
-                const btn = document.querySelector('.play-main i');
-                const isPlaying = btn.getAttribute('data-lucide') === 'pause';
-
-                if (isPlaying) {
-                    btn.setAttribute('data-lucide', 'play');
-                } else {
-                    btn.setAttribute('data-lucide', 'pause');
-                }
-                lucide.createIcons();
-            }
-
-            // Initialize listener for arc labels
-            document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll('.arc-label').forEach(label => {
-                    label.addEventListener('click', () => selectVoiceTrack(label));
-                });
-            });
-        </script>
 
         <!-- THE PROCESS -->
         <section id="process" class="process-section">
@@ -1316,6 +1248,191 @@
                 }
             }
         };
+
+        // AI VOICE PORTFOLIO V2 LOGIC
+        const vpTracks = [
+            { title: "Call Recording 001", meta: "CLIENT INTAKE · PERSONAL INJURY", duration: 135 },
+            { title: "Call Recording 002", meta: "FOLLOW UP · REAL ESTATE", duration: 98 },
+            { title: "Call Recording 003", meta: "LEAD QUALIFICATION · SAAS", duration: 210 },
+            { title: "Call Recording 004", meta: "OUTBOUND SALES · B2B", duration: 175 }
+        ];
+
+        let vpCurrentTrackIndex = 0;
+        let vpIsPlaying = false;
+        let vpCurrentTime = 0;
+        let vpInterval = null;
+        const vpTotalBars = 60;
+        let vpWaveformData = [];
+
+        const elTitle = document.getElementById('vp-h-title');
+        const elMeta = document.getElementById('vp-h-meta');
+        const elWaveform = document.getElementById('vp-waveform');
+        const elTimeCurrent = document.getElementById('vp-time-current');
+        const elTimeTotal = document.getElementById('vp-time-total');
+        const elPlayBtn = document.getElementById('vp-play-pause');
+        const elPlaylist = document.getElementById('vp-playlist');
+
+        function vpFormatTime(sec) {
+            const min = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60).toString().padStart(2, '0');
+            return `${min}:${s}`;
+        }
+
+        function vpGenerateWaveform(seed) {
+            vpWaveformData = [];
+            for (let i = 0; i < vpTotalBars; i++) {
+                let h = 20 + Math.abs(Math.sin(i * 0.4 + seed) * 40) + (Math.random() * 20);
+                if (h > 100) h = 100;
+                vpWaveformData.push(h);
+            }
+        }
+
+        function vpRenderWaveform() {
+            elWaveform.innerHTML = '';
+            const progressRatio = vpCurrentTime / vpTracks[vpCurrentTrackIndex].duration;
+            
+            for (let i = 0; i < vpTotalBars; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'vp-bar';
+                bar.style.height = `${vpWaveformData[i]}%`;
+                
+                if (i / vpTotalBars <= progressRatio) {
+                    bar.classList.add('active');
+                }
+                
+                bar.addEventListener('click', () => {
+                    const clickRatio = i / vpTotalBars;
+                    vpCurrentTime = vpTracks[vpCurrentTrackIndex].duration * clickRatio;
+                    vpUpdateDisplay();
+                });
+                
+                elWaveform.appendChild(bar);
+            }
+        }
+
+        function vpRenderPlaylist() {
+            elPlaylist.innerHTML = '';
+            vpTracks.forEach((tk, idx) => {
+                const item = document.createElement('div');
+                item.className = 'vp-item' + (idx === vpCurrentTrackIndex ? ' active' : '');
+                if (idx === vpCurrentTrackIndex && !vpIsPlaying) {
+                    item.classList.add('is-paused');
+                }
+
+                let rightContent = vpFormatTime(tk.duration);
+                if (idx === vpCurrentTrackIndex) {
+                    rightContent = `
+                        <div class="vp-eq">
+                            <div class="vp-eq-bar"></div>
+                            <div class="vp-eq-bar"></div>
+                            <div class="vp-eq-bar"></div>
+                        </div>
+                    `;
+                }
+
+                item.innerHTML = `
+                    <div class="vp-item-body">
+                        <div class="vp-item-title">${tk.title}</div>
+                        <div class="vp-item-meta">${tk.meta}</div>
+                    </div>
+                    <div class="vp-item-right">${rightContent}</div>
+                `;
+                
+                item.addEventListener('click', () => {
+                    if (vpCurrentTrackIndex !== idx) {
+                        vpCurrentTrackIndex = idx;
+                        vpCurrentTime = 0;
+                        vpIsPlaying = true;
+                        vpLoadTrack();
+                    } else {
+                        vpTogglePlay();
+                    }
+                });
+                
+                elPlaylist.appendChild(item);
+            });
+        }
+
+        function vpLoadTrack() {
+            const tk = vpTracks[vpCurrentTrackIndex];
+            elTitle.textContent = tk.title;
+            elMeta.textContent = tk.meta;
+            elTimeTotal.textContent = vpFormatTime(tk.duration);
+            
+            vpGenerateWaveform(vpCurrentTrackIndex + 1);
+            vpUpdateDisplay();
+        }
+
+        function vpUpdateDisplay() {
+            const tk = vpTracks[vpCurrentTrackIndex];
+            if (vpCurrentTime >= tk.duration) {
+                vpCurrentTime = tk.duration;
+                vpNextTrack();
+                return;
+            }
+            elTimeCurrent.textContent = vpFormatTime(vpCurrentTime);
+            vpRenderWaveform();
+            
+            const icon = elPlayBtn.querySelector('i');
+            if (vpIsPlaying) {
+                icon.setAttribute('data-lucide', 'pause');
+                elPlayBtn.classList.add('is-playing');
+            } else {
+                icon.setAttribute('data-lucide', 'play');
+                elPlayBtn.classList.remove('is-playing');
+            }
+            lucide.createIcons();
+            
+            vpRenderPlaylist();
+        }
+
+        function vpTogglePlay() {
+            vpIsPlaying = !vpIsPlaying;
+            vpUpdateDisplay();
+        }
+
+        function vpNextTrack() {
+            vpCurrentTrackIndex = (vpCurrentTrackIndex + 1) % vpTracks.length;
+            vpCurrentTime = 0;
+            vpLoadTrack();
+        }
+
+        function vpPrevTrack() {
+            if (vpCurrentTime > 3) {
+                vpCurrentTime = 0;
+            } else {
+                vpCurrentTrackIndex = (vpCurrentTrackIndex - 1 + vpTracks.length) % vpTracks.length;
+                vpCurrentTime = 0;
+            }
+            vpLoadTrack();
+        }
+
+        function vpSkip(amt) {
+            vpCurrentTime = Math.max(0, vpCurrentTime + amt);
+            if(vpCurrentTime >= vpTracks[vpCurrentTrackIndex].duration) vpCurrentTime = vpTracks[vpCurrentTrackIndex].duration;
+            vpUpdateDisplay();
+        }
+
+        setInterval(() => {
+            if (vpIsPlaying) {
+                vpCurrentTime += 0.25;
+                vpUpdateDisplay();
+            }
+        }, 250);
+
+        document.getElementById('vp-play-pause').addEventListener('click', vpTogglePlay);
+        document.getElementById('vp-next').addEventListener('click', vpNextTrack);
+        document.getElementById('vp-prev').addEventListener('click', vpPrevTrack);
+        document.getElementById('vp-ff').addEventListener('click', () => vpSkip(10));
+        document.getElementById('vp-rw').addEventListener('click', () => vpSkip(-10));
+
+        // Init App style player
+        document.addEventListener('DOMContentLoaded', () => {
+            vpLoadTrack();
+            vpIsPlaying = false; 
+            vpUpdateDisplay();
+        });
+    </script>
 
         // Logic to scroll carousel
         window.scrollImpact = function (direction) {
