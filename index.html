@@ -24,8 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-B1aDiRf5.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-COFBvmGJ.css">
+  <script type="module" crossorigin src="./assets/index-7TjkmElr.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Bk8Xa8d6.css">
 </head>
 
 <body class="dark-theme">
@@ -543,7 +543,7 @@
         <section id="voice-portfolio" class="vh3-section">
             <div class="container" style="max-width: 1400px;">
                 <div class="vh3-grid">
-                    
+
                     <!-- Column 1: Player Interface (Avatar + Playlist) -->
                     <div class="vh3-player-col">
                         <div class="vh3-avatar">
@@ -551,7 +551,7 @@
                             <div class="v3-ring v3-inner"></div>
                             <img src="./ai_headphone_bot.png" alt="AI Agent">
                         </div>
-                        
+
                         <div class="vh3-playlist" id="vh3-playlist-container">
                             <!-- Dynamically injected by JS -->
                         </div>
@@ -560,11 +560,11 @@
                     <!-- Column 2: Large Typography Text -->
                     <div class="vh3-text-col">
                         <h2 class="vh3-massive-text">
-                            OUR <span class="vh3-text-blue">AI CALLER</span><br>
+                            OUR <span class="gradient-text">AI CALLER</span><br>
                             JUST OUT-TALKED<br>
                             YOUR WHOLE<br>
-                            TEAM. IN <span class="vh3-text-blue">50</span><br>
-                            <span class="vh3-text-blue">LANGUAGES.</span>
+                            TEAM. IN <span class="gradient-text">50</span><br>
+                            <span class="gradient-text">LANGUAGES.</span>
                         </h2>
                     </div>
 
@@ -1243,7 +1243,7 @@
 
         let vpCurrentTrackIndex = 0;
         let vpIsPlaying = false;
-        
+
         const elPlaylist = document.getElementById('vh3-playlist-container');
         const vpAudio = new Audio();
         vpAudio.src = vpTracks[0].file;
@@ -1253,29 +1253,29 @@
             elPlaylist.innerHTML = '';
             vpTracks.forEach((tk, idx) => {
                 const isActive = (idx === vpCurrentTrackIndex);
-                
+
                 const item = document.createElement('div');
                 item.className = 'vh3-pill' + (isActive ? ' active' : '');
-                
+
                 // Play Icon Container
                 const playCircle = document.createElement('div');
                 playCircle.className = 'vh3-play-circle';
-                
+
                 const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="margin-left: 2px;"><path d="M5 3l14 9-14 9V3z"/></svg>`;
                 const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
-                
+
                 playCircle.innerHTML = (isActive && vpIsPlaying) ? pauseIcon : playIcon;
-                
+
                 // Waveform Container
                 const waveContainer = document.createElement('div');
                 waveContainer.className = 'vh3-wave';
-                for(let i=0; i<30; i++) {
+                for (let i = 0; i < 30; i++) {
                     const bar = document.createElement('div');
                     bar.className = 'vh3-bar';
                     // Generate a full looking static shape that closely matches the photo
-                    const pct = i/30;
+                    const pct = i / 30;
                     const curve = Math.sin(pct * Math.PI); // Bump in the middle
-                    const baseH = (curve * 60) + (20 + Math.random() * 20); 
+                    const baseH = (curve * 60) + (20 + Math.random() * 20);
                     bar.style.height = `${baseH}%`;
                     waveContainer.appendChild(bar);
                 }
@@ -1292,7 +1292,7 @@
                 item.appendChild(textContainer);
 
                 item.addEventListener('click', () => {
-                    if(vpCurrentTrackIndex === idx) {
+                    if (vpCurrentTrackIndex === idx) {
                         vpTogglePlay();
                     } else {
                         vpCurrentTrackIndex = idx;
@@ -1314,12 +1314,12 @@
 
         function vpGenerateStaticWave() {
             vpRenderPlaylist();
-            
+
             clearInterval(vh3WaveTimer);
-            if(vpIsPlaying) {
+            if (vpIsPlaying) {
                 vh3WaveTimer = setInterval(() => {
                     const activePill = document.querySelector('.vh3-pill.active .vh3-wave');
-                    if(activePill) {
+                    if (activePill) {
                         Array.from(activePill.children).forEach((bar, i) => {
                             // Parabolic easing with randomness to simulate voice
                             let pct = i / 25;
