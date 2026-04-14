@@ -3558,7 +3558,7 @@ section {
 
 .hologram-player-section {
     padding: 120px 0;
-    background: #030303;
+    background: transparent;
     position: relative;
     overflow: hidden;
     color: #fff;
