@@ -4018,37 +4018,35 @@ section {
     align-items: center;
 }
 
-/* Column 1: Text */
+/* Column 1: Text Typography */
 .vh3-text-col {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
 }
 
-.vh3-features {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+.vh3-massive-text {
+    font-family: var(--font-heading);
+    font-size: 65px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin: 0;
 }
 
-.v3-feat {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.v3-feat i {
-    color: var(--accent-blue);
-    width: 20px;
+.vh3-text-blue {
+    color: #1e90ff;
 }
 
 /* Column 2: Player */
 .vh3-player-col {
     display: flex;
     align-items: center;
-    gap: 40px;
+    position: relative;
+    justify-content: flex-start;
 }
 
 /* Avatar Side */
@@ -4099,22 +4097,34 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    z-index: 20;
+    margin-left: -50px; /* Pull into avatar */
+    align-items: flex-start; /* Shrinkwrap the pills */
 }
+
+/* Arc Staggering */
+.vh3-pill:nth-child(1) { transform: translateX(-15px); }
+.vh3-pill:nth-child(2) { transform: translateX(35px); }
+.vh3-pill:nth-child(3) { transform: translateX(50px); }
+.vh3-pill:nth-child(4) { transform: translateX(35px); }
+.vh3-pill:nth-child(5) { transform: translateX(-15px); }
 
 .vh3-pill {
     display: flex;
     align-items: center;
     gap: 15px;
-    background: linear-gradient(180deg, rgba(0, 100, 255, 0.15) 0%, rgba(0, 20, 60, 0.4) 100%);
-    border: 1px solid rgba(0, 150, 255, 0.2);
-    border-top: 2px solid rgba(0, 220, 255, 0.8);
-    border-bottom: 1px solid rgba(0, 120, 255, 0.4);
-    border-radius: 40px;
-    padding: 12px 25px;
+    background: linear-gradient(180deg, rgba(0, 50, 150, 0.05) 0%, rgba(0, 10, 40, 0.4) 100%);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    border-top: 2px solid rgba(0, 220, 255, 0.9);
+    border-bottom: 2px solid rgba(0, 120, 255, 0.5);
+    border-radius: 50px; /* perfectly round endcaps */
+    padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 2px 10px rgba(0, 200, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 2px 10px rgba(0, 200, 255, 0.1);
+    width: fit-content;
+    white-space: nowrap;
 }
 
 .vh3-pill:hover {
@@ -4168,8 +4178,8 @@ section {
     justify-content: center;
     gap: 3px;
     height: 38px;
-    flex: 1;
-    margin: 0 15px;
+    width: 140px; /* Fixed width now that flex:1 is gone */
+    margin: 0 5px;
 }
 
 .vh3-bar {
