@@ -439,8 +439,7 @@
         <section id="impact" class="impact-section">
             <div class="container text-center">
                 <div class="section-header center">
-                    <span class="section-label"
-                        style="border-color: rgba(255, 120, 75, 0.3); color: #ff784b;">IMPACT</span>
+                    <span class="section-label">IMPACT</span>
                     <h2 class="section-h">How We Are Doing It Faster And Better Than <span
                             class="gradient-text">Others!</span></h2>
                     <p class="section-p" style="max-width: 600px; margin: 0 auto;">Our autonomous marketing system
@@ -1124,12 +1123,11 @@
 
                 <div class="footer-col">
                     <h4 class="col-title">Contact</h4>
-                    <ul class="footer-link-list">
-                        <li><a href="mailto:hello@adeeze.com">hello@adeeze.com</a></li>
-                        <li><a href="#">+1 (208) 998-6888</a></li>
-                        <li><a href="#">539 W. Commerce St #7865 Dallas TX 75208 USA
-                            </a></li>
-                        <li><a href="#">Support Hub</a></li>
+                    <ul class="footer-link-list contact-list">
+                        <li><a href="mailto:hello@adeeze.com"><i data-lucide="mail"></i> hello@adeeze.com</a></li>
+                        <li><a href="#"><i data-lucide="phone"></i> +1 (208) 998-6888</a></li>
+                        <li><a href="#"><i data-lucide="map-pin"></i> 539 W. Commerce St #7865 Dallas TX 75208 USA</a></li>
+                        <li><a href="#"><i data-lucide="help-circle"></i> Support Hub</a></li>
                     </ul>
                 </div>
             </div>
@@ -1204,8 +1202,39 @@
             if (!carousel) return;
             const cardWidth = carousel.querySelector('.impact-card').offsetWidth;
             const scrollAmount = (cardWidth + 30) * direction; // width + gap
-            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            
+            // Check for loop
+            const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
+            const isAtStart = carousel.scrollLeft <= 5;
+
+            if (direction === 1 && isAtEnd) {
+                carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else if (direction === -1 && isAtStart) {
+                carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
         };
+
+        // Impact Autoplay logic
+        let impactInterval;
+        const startImpactSlider = () => {
+            if (!impactInterval) {
+                impactInterval = setInterval(() => window.scrollImpact(1), 4000);
+            }
+        };
+        const stopImpactSlider = () => {
+            clearInterval(impactInterval);
+            impactInterval = null;
+        };
+
+        const impactCarouselEl = document.getElementById('impactCarousel');
+        if (impactCarouselEl) {
+            impactCarouselEl.addEventListener('mouseenter', stopImpactSlider);
+            impactCarouselEl.addEventListener('mouseleave', startImpactSlider);
+            // Also start on load
+            startImpactSlider();
+        }
     </script>
 
     <script type="module" src="/agency-logic.js"></script>
