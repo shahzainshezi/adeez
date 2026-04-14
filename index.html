@@ -1249,10 +1249,12 @@
 
         // HOLOGRAPHIC AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "12", title: "CALL RECORDING 001", file: "/sample_audio.mp3" },
-            { id: "01", title: "CALL RECORDING 002", file: "/sample_audio.mp3" },
-            { id: "02", title: "CALL RECORDING 003", file: "/sample_audio.mp3" },
-            { id: "03", title: "CALL RECORDING 004", file: "/sample_audio.mp3" }
+            { id: "01", title: "CALL RECORDING 001", file: "/sample_audio.mp3" },
+            { id: "02", title: "CALL RECORDING 002", file: "/sample_audio.mp3" },
+            { id: "03", title: "CALL RECORDING 003", file: "/sample_audio.mp3" },
+            { id: "04", title: "CALL RECORDING 004", file: "/sample_audio.mp3" },
+            { id: "05", title: "CALL RECORDING 005", file: "/sample_audio.mp3" },
+            { id: "06", title: "CALL RECORDING 006", file: "/sample_audio.mp3" }
         ];
 
         let vpCurrentTrackIndex = 0;
@@ -1315,7 +1317,8 @@
 
         function vpRenderArc() {
             elArcMenu.innerHTML = '';
-            const angles = [-35, -15, 10, 35];
+            // 6 angles distributed around the top arc
+            const angles = [-50, -30, -10, 10, 30, 50];
             vpTracks.forEach((tk, idx) => {
                 const item = document.createElement('div');
                 item.className = 'holo-arc-item' + (idx === vpCurrentTrackIndex ? ' active' : '');

@@ -2567,7 +2567,7 @@ section {
 
 /* PROCESS SECTION */
 .process-section {
-    padding: 180px 0 120px 0;
+    padding: 100px 0 120px 0;
     position: relative;
     background: transparent;
 }
@@ -3557,7 +3557,7 @@ section {
    ================================ */
 
 .hologram-player-section {
-    padding: 80px 0;
+    padding: 0px 0;
     background: transparent;
     position: relative;
     overflow: hidden;
@@ -3598,7 +3598,8 @@ section {
     position: absolute;
     top: -50px;
     left: 50%;
-    height: 300px; /* Radius */
+    height: 300px;
+    /* Radius */
     margin-left: -20px;
     transform-origin: bottom center;
     transform: rotate(var(--rot));
@@ -3611,8 +3612,14 @@ section {
     opacity: 0.3;
 }
 
-.holo-arc-item:hover { opacity: 0.7; }
-.holo-arc-item.active { opacity: 1; filter: drop-shadow(0 0 10px var(--accent-blue)); }
+.holo-arc-item:hover {
+    opacity: 0.7;
+}
+
+.holo-arc-item.active {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px var(--accent-blue));
+}
 
 .ha-num {
     font-family: var(--font-heading);
@@ -3639,14 +3646,13 @@ section {
     transform: translate(-50%, -50%);
     width: 100vw;
     height: 120px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(0, 131, 239, 0.05) 15%, 
-        rgba(0, 131, 239, 0.15) 35%, 
-        rgba(0, 131, 239, 0.15) 65%, 
-        rgba(0, 131, 239, 0.05) 85%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(0, 131, 239, 0.05) 15%,
+            rgba(0, 131, 239, 0.15) 35%,
+            rgba(0, 131, 239, 0.15) 65%,
+            rgba(0, 131, 239, 0.05) 85%,
+            transparent 100%);
     border-top: 1px solid rgba(0, 131, 239, 0.2);
     border-bottom: 1px solid rgba(0, 131, 239, 0.2);
     display: flex;
@@ -3656,23 +3662,32 @@ section {
     pointer-events: none;
 }
 
-.holo-band > * { pointer-events: auto; }
+.holo-band>* {
+    pointer-events: auto;
+}
 
 .hb-center-space {
-    width: 380px; /* Space for the orb */
+    width: 380px;
+    /* Space for the orb */
     flex-shrink: 0;
 }
 
 /* Controls */
-.hb-left, .hb-right {
+.hb-left,
+.hb-right {
     display: flex;
     align-items: center;
     gap: 30px;
     flex-shrink: 0;
 }
 
-.hb-left { margin-right: 30px; }
-.hb-right { margin-left: 30px; }
+.hb-left {
+    margin-right: 30px;
+}
+
+.hb-right {
+    margin-left: 30px;
+}
 
 .hb-btn {
     background: none;
@@ -3686,9 +3701,14 @@ section {
     justify-content: center;
 }
 
-.hb-btn:hover { opacity: 1; color: var(--accent-blue); transform: scale(1.1); }
+.hb-btn:hover {
+    opacity: 1;
+    color: var(--accent-blue);
+    transform: scale(1.1);
+}
 
-.hb-play, .hb-heart {
+.hb-play,
+.hb-heart {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -3698,10 +3718,16 @@ section {
     box-shadow: 0 0 20px rgba(0, 131, 239, 0.3), inset 0 0 10px rgba(0, 131, 239, 0.2);
 }
 
-.hb-play i { margin-left: 3px; }
-.hb-heart { border-color: rgba(0, 131, 239, 0.2); }
+.hb-play i {
+    margin-left: 3px;
+}
 
-.hb-play:hover, .hb-heart:hover {
+.hb-heart {
+    border-color: rgba(0, 131, 239, 0.2);
+}
+
+.hb-play:hover,
+.hb-heart:hover {
     box-shadow: 0 0 30px rgba(0, 131, 239, 0.6), inset 0 0 15px rgba(0, 131, 239, 0.4);
 }
 
@@ -3715,8 +3741,15 @@ section {
     max-width: 150px;
 }
 
-.hb-waveform.left { justify-content: flex-end; margin-right: 0px; }
-.hb-waveform.right { justify-content: flex-start; margin-left: 0px; }
+.hb-waveform.left {
+    justify-content: flex-end;
+    margin-right: 0px;
+}
+
+.hb-waveform.right {
+    justify-content: flex-start;
+    margin-left: 0px;
+}
 
 .hw-bar {
     width: 2px;
@@ -3804,29 +3837,105 @@ section {
 }
 
 @keyframes ho-spin {
-    100% { transform: rotate(360deg); }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 900px) {
-    .holo-player-wrapper { height: 500px; }
-    .holo-band { padding: 0 20px; height: 80px; }
-    .holo-orb { width: 250px; height: 250px; }
-    .ho-ring.inner { width: 220px; height: 220px; }
-    .ho-avatar { width: 200px; height: 200px; }
-    .ho-dot { bottom: 20px; right: 20px; }
-    .holo-arc { width: 350px; height: 350px; }
-    .holo-arc-item { height: 200px; }
-    .hb-center-space { width: 250px; }
-    .hb-waveform { max-width: 80px; }
-    .hb-left { margin-right: 10px; gap: 15px; }
-    .hb-right { margin-left: 10px; gap: 15px; }
-    .hb-play, .hb-heart { width: 45px; height: 45px; }
+    .holo-player-wrapper {
+        height: 500px;
+    }
+
+    .holo-band {
+        padding: 0 20px;
+        height: 80px;
+    }
+
+    .holo-orb {
+        width: 250px;
+        height: 250px;
+    }
+
+    .ho-ring.inner {
+        width: 220px;
+        height: 220px;
+    }
+
+    .ho-avatar {
+        width: 200px;
+        height: 200px;
+    }
+
+    .ho-dot {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .holo-arc {
+        width: 350px;
+        height: 350px;
+    }
+
+    .holo-arc-item {
+        height: 200px;
+    }
+
+    .hb-center-space {
+        width: 250px;
+    }
+
+    .hb-waveform {
+        max-width: 80px;
+    }
+
+    .hb-left {
+        margin-right: 10px;
+        gap: 15px;
+    }
+
+    .hb-right {
+        margin-left: 10px;
+        gap: 15px;
+    }
+
+    .hb-play,
+    .hb-heart {
+        width: 45px;
+        height: 45px;
+    }
 }
+
 @media (max-width: 600px) {
-    .holo-band { border: none; background: none; flex-direction: column; top: auto; bottom: 0; transform: translateX(-50%); height: auto; gap: 20px;}
-    .hb-center-space, .hb-waveform { display: none; }
-    .holo-player-wrapper { height: 650px; align-items: flex-start; margin-top: 80px;}
-    .holo-orb { top: 0; transform: translateX(-50%); }
-    .holo-arc { top: 0; }
+    .holo-band {
+        border: none;
+        background: none;
+        flex-direction: column;
+        top: auto;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: auto;
+        gap: 20px;
+    }
+
+    .hb-center-space,
+    .hb-waveform {
+        display: none;
+    }
+
+    .holo-player-wrapper {
+        height: 650px;
+        align-items: flex-start;
+        margin-top: 80px;
+    }
+
+    .holo-orb {
+        top: 0;
+        transform: translateX(-50%);
+    }
+
+    .holo-arc {
+        top: 0;
+    }
 }
