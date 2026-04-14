@@ -24,8 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-Dhi1NCUF.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-7Cz5EZbX.css">
+  <script type="module" crossorigin src="./assets/index-DKBbPtRK.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BpzjVEA0.css">
 </head>
 
 <body class="dark-theme">
@@ -602,7 +602,7 @@
                         <div class="wave-bar" style="animation-delay: 0.4s"></div>
                     </div>
 
-                    <img src="/ai_voice_core_hologram_1776192359114.png" alt="AI Core Hologram" class="voice-core-image">
+                    <img src="./ai_voice_core_hologram.png" alt="AI Core Hologram" class="voice-core-image">
 
                     <div class="voice-waveform right">
                         <div class="wave-bar" style="animation-delay: 0.5s"></div>
@@ -620,18 +620,44 @@
                 <div class="audio-player-controls">
                     <div class="player-side left">
                         <button class="p-btn"><i data-lucide="skip-back"></i></button>
-                        <button class="p-btn play-main"><i data-lucide="play" fill="currentColor"></i></button>
+                        <button class="p-btn play-main" onclick="togglePlayVoice()"><i data-lucide="play" fill="currentColor"></i></button>
                         <button class="p-btn"><i data-lucide="skip-forward"></i></button>
                     </div>
 
                     <div class="player-side right">
-                        <button class="p-btn"><i data-lucide="skip-back"></i></button>
+                        <button class="p-btn"><i data-lucide="volume-2"></i></button>
                         <button class="p-btn heart active"><i data-lucide="heart" fill="currentColor"></i></button>
-                        <button class="p-btn"><i data-lucide="skip-forward"></i></button>
+                        <button class="p-btn"><i data-lucide="maximize-2"></i></button>
                     </div>
                 </div>
             </div>
         </section>
+
+        <script>
+            function selectVoiceTrack(el) {
+                document.querySelectorAll('.arc-label').forEach(label => label.classList.remove('active'));
+                el.classList.add('active');
+            }
+
+            function togglePlayVoice() {
+                const btn = document.querySelector('.play-main i');
+                const isPlaying = btn.getAttribute('data-lucide') === 'pause';
+
+                if (isPlaying) {
+                    btn.setAttribute('data-lucide', 'play');
+                } else {
+                    btn.setAttribute('data-lucide', 'pause');
+                }
+                lucide.createIcons();
+            }
+
+            // Initialize listener for arc labels
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.arc-label').forEach(label => {
+                    label.addEventListener('click', () => selectVoiceTrack(label));
+                });
+            });
+        </script>
 
         <!-- THE PROCESS -->
         <section id="process" class="process-section">
