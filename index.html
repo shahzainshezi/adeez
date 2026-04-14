@@ -1249,15 +1249,14 @@
 
         // HOLOGRAPHIC AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "12", title: "CALL RECORDING 001", duration: 135 },
-            { id: "01", title: "CALL RECORDING 002", duration: 98 },
-            { id: "02", title: "CALL RECORDING 003", duration: 210 },
-            { id: "03", title: "CALL RECORDING 004", duration: 175 }
+            { id: "12", title: "CALL RECORDING 001", file: "/sample_audio.mp3" },
+            { id: "01", title: "CALL RECORDING 002", file: "/sample_audio.mp3" },
+            { id: "02", title: "CALL RECORDING 003", file: "/sample_audio.mp3" },
+            { id: "03", title: "CALL RECORDING 004", file: "/sample_audio.mp3" }
         ];
 
         let vpCurrentTrackIndex = 0;
         let vpIsPlaying = false;
-        let vpCurrentTime = 0;
         const vpTotalBarsPerSide = 30;
         let vpWaveformDataL = [];
         let vpWaveformDataR = [];
@@ -1267,8 +1266,13 @@
         const elWaveL = document.getElementById('vp-wave-l');
         const elWaveR = document.getElementById('vp-wave-r');
         const elArcMenu = document.getElementById('vp-arc-menu');
+        
+        // Setup Audio Element
+        const vpAudio = new Audio();
+        vpAudio.src = vpTracks[0].file;
 
         function vpFormatTime(sec) {
+            if (isNaN(sec)) return "0:00";
             const min = Math.floor(sec / 60);
             const s = Math.floor(sec % 60).toString().padStart(2, '0');
             return `${min}:${s}`;
@@ -1319,28 +1323,26 @@
                 item.innerHTML = `<span class="ha-num">${tk.id}</span><span class="ha-text">${tk.title}</span>`;
                 item.addEventListener('click', () => {
                     vpCurrentTrackIndex = idx;
-                    vpCurrentTime = 0;
-                    vpIsPlaying = true;
                     vpLoadTrack();
+                    vpAudio.play().then(() => { vpIsPlaying = true; vpUpdateDisplay(); });
                 });
                 elArcMenu.appendChild(item);
             });
         }
 
         function vpLoadTrack() {
+            vpAudio.src = vpTracks[vpCurrentTrackIndex].file;
+            vpAudio.load();
             vpGenerateWaveform();
             vpRenderArc();
             vpUpdateDisplay();
         }
 
         function vpUpdateDisplay() {
-            const tk = vpTracks[vpCurrentTrackIndex];
-            if (vpCurrentTime >= tk.duration) {
-                vpCurrentTime = 0; // Fix: reset when auto-nexting logic
-                vpNextTrack();
-                return;
-            }
-            elTimer.textContent = `${vpFormatTime(vpCurrentTime)} / ${vpFormatTime(tk.duration)}`;
+            const currentTime = vpAudio.currentTime || 0;
+            const duration = vpAudio.duration || 0;
+            
+            elTimer.textContent = `${vpFormatTime(currentTime)} / ${vpFormatTime(duration)}`;
             
             const icon = elPlayBtn.querySelector('i');
             if (vpIsPlaying) {
@@ -1358,29 +1360,43 @@
         }
 
         window.vpTogglePlay = function() {
-            vpIsPlaying = !vpIsPlaying;
-            vpUpdateDisplay();
+            if (vpAudio.paused) {
+                vpAudio.play().then(() => {
+                    vpIsPlaying = true;
+                    vpUpdateDisplay();
+                });
+            } else {
+                vpAudio.pause();
+                vpIsPlaying = false;
+                vpUpdateDisplay();
+            }
         }
 
         window.vpNextTrack = function() {
             vpCurrentTrackIndex = (vpCurrentTrackIndex + 1) % vpTracks.length;
-            vpCurrentTime = 0;
             vpLoadTrack();
+            if (vpIsPlaying) vpAudio.play();
         }
 
         window.vpPrevTrack = function() {
             vpCurrentTrackIndex = (vpCurrentTrackIndex - 1 + vpTracks.length) % vpTracks.length;
-            vpCurrentTime = 0;
             vpLoadTrack();
+            if (vpIsPlaying) vpAudio.play();
         }
+
+        // Event Listeners for Audio element
+        vpAudio.addEventListener('timeupdate', () => {
+            if(vpIsPlaying && Math.floor(vpAudio.currentTime * 4) % 4 === 0) {
+                vpUpdateDisplay();
+            }
+        });
+        
+        vpAudio.addEventListener('loadedmetadata', vpUpdateDisplay);
+        vpAudio.addEventListener('ended', window.vpNextTrack);
 
         setInterval(() => {
             if (vpIsPlaying) {
-                vpCurrentTime += 0.25;
                 vpRenderWaveform();
-                if (Math.floor(vpCurrentTime * 4) % 4 === 0) {
-                    vpUpdateDisplay();
-                }
             }
         }, 250);
 
