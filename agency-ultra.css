@@ -4013,9 +4013,42 @@ section {
 
 .vh3-grid {
     display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 80px;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
     align-items: center;
+}
+
+/* Column 1: Text */
+.vh3-text-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.vh3-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.v3-feat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.v3-feat i {
+    color: var(--accent-blue);
+    width: 20px;
+}
+
+/* Column 2: Player */
+.vh3-player-col {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
 /* Avatar Side */
