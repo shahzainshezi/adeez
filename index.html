@@ -1259,7 +1259,11 @@
                 // Play Icon Container
                 const playCircle = document.createElement('div');
                 playCircle.className = 'vh3-play-circle';
-                playCircle.innerHTML = `<i data-lucide="${isActive && vpIsPlaying ? 'pause' : 'play'}" fill="currentColor"></i>`;
+                
+                const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="margin-left: 2px;"><path d="M5 3l14 9-14 9V3z"/></svg>`;
+                const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+                
+                playCircle.innerHTML = (isActive && vpIsPlaying) ? pauseIcon : playIcon;
                 
                 // Waveform Container
                 const waveContainer = document.createElement('div');

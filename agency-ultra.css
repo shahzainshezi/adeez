@@ -4004,7 +4004,7 @@ section {
    ================================ */
 
 .vh3-section {
-    padding: 100px 0;
+    padding: 55px 0;
     position: relative;
     background: transparent;
     color: #fff;
@@ -4028,17 +4028,18 @@ section {
 
 .vh3-massive-text {
     font-family: var(--font-heading);
-    font-size: 65px;
+    font-size: 56px;
     font-weight: 900;
-    line-height: 1.15;
+    line-height: 1.1;
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
     margin: 0;
 }
 
 .vh3-text-blue {
     color: #1e90ff;
+    text-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
 }
 
 /* Column 2: Player */
@@ -4099,16 +4100,32 @@ section {
     flex-direction: column;
     gap: 20px;
     z-index: 20;
-    margin-left: -50px; /* Pull into avatar */
-    align-items: flex-start; /* Shrinkwrap the pills */
+    margin-left: -20px;
+    /* Pull into avatar */
+    align-items: flex-start;
+    /* Shrinkwrap the pills */
 }
 
 /* Arc Staggering */
-.vh3-pill:nth-child(1) { transform: translateX(-15px); }
-.vh3-pill:nth-child(2) { transform: translateX(35px); }
-.vh3-pill:nth-child(3) { transform: translateX(50px); }
-.vh3-pill:nth-child(4) { transform: translateX(35px); }
-.vh3-pill:nth-child(5) { transform: translateX(-15px); }
+.vh3-pill:nth-child(1) {
+    transform: translateX(-15px);
+}
+
+.vh3-pill:nth-child(2) {
+    transform: translateX(35px);
+}
+
+.vh3-pill:nth-child(3) {
+    transform: translateX(50px);
+}
+
+.vh3-pill:nth-child(4) {
+    transform: translateX(35px);
+}
+
+.vh3-pill:nth-child(5) {
+    transform: translateX(-15px);
+}
 
 .vh3-pill {
     display: flex;
@@ -4118,7 +4135,8 @@ section {
     border: 1px solid rgba(0, 150, 255, 0.3);
     border-top: 2px solid rgba(0, 220, 255, 0.9);
     border-bottom: 2px solid rgba(0, 120, 255, 0.5);
-    border-radius: 50px; /* perfectly round endcaps */
+    border-radius: 50px;
+    /* perfectly round endcaps */
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -4156,7 +4174,8 @@ section {
     box-shadow: inset 0 0 10px rgba(0, 200, 255, 0.3);
 }
 
-.vh3-pill.active .vh3-play-circle, .vh3-pill:hover .vh3-play-circle {
+.vh3-pill.active .vh3-play-circle,
+.vh3-pill:hover .vh3-play-circle {
     background: rgba(0, 200, 255, 0.3);
     color: #fff;
     box-shadow: 0 0 15px rgba(0, 200, 255, 0.6), inset 0 0 10px rgba(0, 200, 255, 0.5);
@@ -4167,6 +4186,7 @@ section {
     height: 20px;
     margin-left: 2px;
 }
+
 .vh3-pill.active .vh3-play-circle i {
     margin-left: 0;
 }
@@ -4178,7 +4198,8 @@ section {
     justify-content: center;
     gap: 3px;
     height: 38px;
-    width: 140px; /* Fixed width now that flex:1 is gone */
+    width: 140px;
+    /* Fixed width now that flex:1 is gone */
     margin: 0 5px;
 }
 
@@ -4213,7 +4234,8 @@ section {
     font-size: 11.5px;
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.4;
-    white-space: normal; /* text wraps precisely like the image */
+    white-space: normal;
+    /* text wraps precisely like the image */
 }
 
 .vh3-pill.active .vh3-title {
@@ -4226,20 +4248,30 @@ section {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
     .vh3-player-col {
         flex-direction: column;
         align-items: center;
     }
+
     .vh3-text {
         text-align: left;
         margin-left: 0;
     }
-    .vh3-title { font-size: 12px; }
+
+    .vh3-title {
+        font-size: 12px;
+    }
+
     .vh3-playlist {
         width: 100%;
         max-width: 500px;
     }
-    .vh3-wave { justify-content: flex-end; margin-right: 15px; }
+
+    .vh3-wave {
+        justify-content: flex-end;
+        margin-right: 15px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -4247,8 +4279,24 @@ section {
         width: 200px;
         height: 200px;
     }
-    .v3-ring.v3-inner { width: 170px; height: 170px; }
-    .vh3-avatar img { width: 150px; height: 150px; }
-    .vh3-pill { padding: 10px 15px; }
-    .vh3-sub { display: none; } /* Hide sub on very small devices */
+
+    .v3-ring.v3-inner {
+        width: 170px;
+        height: 170px;
+    }
+
+    .vh3-avatar img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .vh3-pill {
+        padding: 10px 15px;
+    }
+
+    .vh3-sub {
+        display: none;
+    }
+
+    /* Hide sub on very small devices */
 }
