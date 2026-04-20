@@ -24,6 +24,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/Adeeze loader icon-09-11.svg">
     <link rel="stylesheet" href="./agency-ultra.css">
 </head>
 
@@ -545,10 +546,20 @@
 
                     <!-- Column 1: Player Interface (Avatar + Playlist) -->
                     <div class="vh3-player-col">
-                        <div class="vh3-avatar">
+                        <!-- RESTORED: ORIGINAL AI IMAGE AVATAR -->
+                        <div class="vh3-ai-avatar-container" id="vh3-avatar-main">
+                            <!-- Background Circles -->
                             <div class="v3-ring v3-outer"></div>
                             <div class="v3-ring v3-inner"></div>
-                            <img src="/ai_headphone_bot.png" alt="AI Agent">
+                            
+                            <!-- The Original Robot Image -->
+                            <div class="vh3-avatar-wrapper" id="ai-robot-head">
+                                <img src="/ai_headphone_bot.png" alt="AI Agent" class="vh3-avatar-img">
+                                <div class="avatar-glow overlay"></div>
+                            </div>
+                            
+                            <!-- Bottom Energy Glow -->
+                            <div class="energy-glow"></div>
                         </div>
 
                         <div class="vh3-playlist" id="vh3-playlist-container">
@@ -559,12 +570,17 @@
                     <!-- Column 2: Large Typography Text -->
                     <div class="vh3-text-col">
                         <h2 class="vh3-massive-text">
-                            OUR <span class="vh3-text-blue">AI CALLER</span><br>
-                            JUST OUT-TALKED<br>
-                            YOUR WHOLE<br>
-                            TEAM. IN <span class="vh3-text-blue">50</span><br>
-                            <span class="vh3-text-blue">LANGUAGES.</span>
+                            <span class="gradient-text">Result</span>
+                            you can hear
                         </h2>
+                        
+                        <div class="vh3-features-pills">
+                            <span class="vh3-feature-pill">50+ languages</span>
+                            <span class="vh3-feature-pill">scheduling</span>
+                            <span class="vh3-feature-pill">lead qualifying</span>
+                            <span class="vh3-feature-pill">cold calling</span>
+                            <span class="vh3-feature-pill">customer support</span>
+                        </div>
                     </div>
 
                 </div>
@@ -1029,28 +1045,42 @@
                                 </div>
                                 <span class="terminal-status">SLOTS REMAINING: <span id="slot-count">09</span></span>
                             </div>
-                            <form class="lead-form">
-                                <div class="form-node">
-                                    <input type="text" placeholder="Full Name" required>
+                            <div id="form-container-wrapper">
+                                <form class="lead-form" id="lead-form">
+                                    <div class="form-node">
+                                        <input type="text" name="full_name" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="form-node">
+                                        <input type="email" name="email" placeholder="Work Email" required>
+                                    </div>
+                                    <div class="form-node">
+                                        <input type="url" name="website" placeholder="Website URL" required>
+                                    </div>
+                                    <div class="form-node">
+                                        <select name="ad_spend" required>
+                                            <option value="" disabled selected>Monthly Ad Spend</option>
+                                            <option value="$5k - $10k">$5k - $10k</option>
+                                            <option value="$10k - $50k">$10k - $50k</option>
+                                            <option value="$50k - $100k">$50k - $100k</option>
+                                            <option value="$100k+">$100k+</option>
+                                        </select>
+                    </div>
+                                    <button type="submit" class="nav-cta-ai btn-form"
+                                        id="submit-btn-form"><span>INITIALIZE
+                                            DEPLOYMENT</span></button>
+                                </form>
+
+                                <div id="form-thank-you"
+                                    style="display:none; text-align:center; padding: 40px 20px; background: rgba(0, 131, 239, 0.05); border: 1px dashed var(--accent-blue); border-radius: 20px; animation: fadeIn 0.5s ease;">
+                                    <div style="font-size: 40px; margin-bottom: 20px; color: var(--accent-blue);">✓
+                                    </div>
+                                    <h3
+                                        style="font-family: var(--font-heading); font-size: 24px; color: #fff; margin-bottom: 10px;">
+                                        PROTOCOL INITIALIZED</h3>
+                                    <p style="color: var(--text-secondary); font-size: 15px;">Your brief has been synced
+                                        with the neural network. An agent will contact you shortly.</p>
                                 </div>
-                                <div class="form-node">
-                                    <input type="email" placeholder="Work Email" required>
-                                </div>
-                                <div class="form-node">
-                                    <input type="url" placeholder="Website URL" required>
-                                </div>
-                                <div class="form-node">
-                                    <select required>
-                                        <option value="" disabled selected>Monthly Ad Spend</option>
-                                        <option value="1">$5k - $10k</option>
-                                        <option value="2">$10k - $50k</option>
-                                        <option value="3">$50k - $100k</option>
-                                        <option value="4">$100k+</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="nav-cta-ai btn-form"><span>INITIALIZE
-                                        DEPLOYMENT</span></button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1233,23 +1263,25 @@
 
         // V3 AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "01", title: "Call Recording 01", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
-            { id: "02", title: "Call Recording 02", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
-            { id: "03", title: "Call Recording 03", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
-            { id: "04", title: "Call Recording 04", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" },
-            { id: "05", title: "Call Recording 05", sub: "Lorem ipsum dolor sit amet, consectetur elit.", file: "/sample_audio.mp3" }
+            { id: "01", title: "Call Recording 01", sub: "Autonomous AI Lead Qualification", file: "/voice notes/1-1.WAV" },
+            { id: "02", title: "Call Recording 02", sub: "Multilingual Customer Support", file: "/voice notes/2-1.WAV" },
+            { id: "03", title: "Call Recording 03", sub: "Real-time Sales Appointment", file: "/voice notes/3-1.WAV" },
+            { id: "04", title: "Call Recording 04", sub: "Hyper-realistic Voice Conversion", file: "/voice notes/4-1.WAV" },
+            { id: "05", title: "Call Recording 05", sub: "Instant Post-Capture Calling", file: "/voice notes/5-1.WAV" }
         ];
 
-        let vpCurrentTrackIndex = 0;
+        let vpCurrentTrackIndex = -1; // No track active by default
         let vpIsPlaying = false;
 
         const elPlaylist = document.getElementById('vh3-playlist-container');
         const vpAudio = new Audio();
-        vpAudio.src = vpTracks[0].file;
         let vh3WaveTimer = null;
 
+
         function vpRenderPlaylist() {
-            elPlaylist.innerHTML = '';
+            const container = document.getElementById('vh3-playlist-container');
+            if (!container) return;
+            container.innerHTML = '';
             vpTracks.forEach((tk, idx) => {
                 const isActive = (idx === vpCurrentTrackIndex);
 
@@ -1300,33 +1332,39 @@
                     }
                 });
 
-                elPlaylist.appendChild(item);
+                container.appendChild(item);
             });
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
-
         function vpLoadTrack() {
+            if (vpCurrentTrackIndex === -1) return;
             vpAudio.src = vpTracks[vpCurrentTrackIndex].file;
             vpAudio.load();
             vpGenerateStaticWave();
         }
 
+
+
+        // Animated Waveform Generation
         function vpGenerateStaticWave() {
             vpRenderPlaylist();
+            const wave = document.getElementById('voice-wave');
 
             clearInterval(vh3WaveTimer);
             if (vpIsPlaying) {
+                if (wave) wave.classList.add('active');
                 vh3WaveTimer = setInterval(() => {
                     const activePill = document.querySelector('.vh3-pill.active .vh3-wave');
                     if (activePill) {
                         Array.from(activePill.children).forEach((bar, i) => {
-                            // Parabolic easing with randomness to simulate voice
                             let pct = i / 25;
                             let height = (Math.sin(pct * Math.PI) * 50) + (Math.random() * 50);
                             bar.style.height = `${height}%`;
                         });
                     }
                 }, 150);
+            } else {
+                if (wave) wave.classList.remove('active');
             }
         }
 
@@ -1352,9 +1390,9 @@
         vpAudio.addEventListener('ended', window.vpNextTrack);
 
         document.addEventListener('DOMContentLoaded', () => {
-            vpLoadTrack();
-            vpIsPlaying = false;
+            // Initial render without active track
             vpRenderPlaylist();
+            vpIsPlaying = false;
         });
 
         // Logic to scroll carousel
@@ -1395,6 +1433,51 @@
             impactCarouselEl.addEventListener('mouseleave', startImpactSlider);
             // Also start on load
             startImpactSlider();
+        }
+
+        // FORM SUBMISSION TO GOOGLE SHEETS
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby7sa5pSl5x03-79o3L8wHhlDKu4hp0HcPz2ujlI1sTBGNZFNYK2E22hLz8vBnyeN_6mg/exec';
+        const formNodes = document.getElementById('lead-form');
+        const thankYou = document.getElementById('form-thank-you');
+        const submitBtn = document.getElementById('submit-btn-form');
+
+        if (formNodes) {
+            formNodes.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // Button state change
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span>UPLOADING DATA...</span>';
+                submitBtn.style.opacity = '0.7';
+                submitBtn.disabled = true;
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(formNodes) })
+                    .then(response => {
+                        console.log('Success!', response);
+
+                        // Hide form and show Thank You
+                        formNodes.style.display = 'none';
+                        thankYou.style.display = 'block';
+
+                        formNodes.reset();
+
+                        // Reset back to form after some time if needed (e.g. 8 seconds)
+                        setTimeout(() => {
+                            thankYou.style.display = 'none';
+                            formNodes.style.display = 'flex';
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.style.opacity = '1';
+                            submitBtn.disabled = false;
+                        }, 8000);
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('Error connecting to neural network. Please try again.');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.disabled = false;
+                    });
+            });
         }
     </script>
 

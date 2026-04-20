@@ -2034,6 +2034,12 @@ section {
     font-family: 'Outfit', sans-serif;
 }
 
+/* Fix for dropdown options visibility */
+.form-node select option {
+    background-color: #000;
+    color: #fff;
+}
+
 .form-node input:focus,
 .form-node select:focus {
     border-color: var(--accent-blue);
@@ -2345,7 +2351,7 @@ section {
     }
 
     .footer-mega {
-        padding: 80px 0 100px;
+        padding: 30px 0 25px;
     }
 
     .footer-mega-svg {
@@ -4028,9 +4034,10 @@ section {
 
 .vh3-massive-text {
     font-family: var(--font-heading);
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.4;
+    text-align: end;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: -1.5px;
@@ -4042,6 +4049,36 @@ section {
     text-shadow: 0 0 20px rgba(0, 131, 239, 0.5);
 }
 
+.vh3-features-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 30px;
+    max-width: 500px;
+}
+
+.vh3-feature-pill {
+    padding: 12px 24px;
+    background: rgba(0, 131, 239, 0.05);
+    border: 1px solid rgba(0, 131, 239, 0.3);
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.vh3-feature-pill:hover {
+    background: rgba(0, 131, 239, 0.15);
+    border-color: #0083ef;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 /* Column 2: Player */
 .vh3-player-col {
     display: flex;
@@ -4050,48 +4087,151 @@ section {
     justify-content: flex-start;
 }
 
-/* Avatar Side */
-.vh3-avatar {
+/* ================================================
+   ORIGINAL IMAGE AVATAR RESTORED
+   ================================================ */
+
+.vh3-ai-avatar-container {
     position: relative;
-    width: 380px;
-    height: 380px;
-    flex-shrink: 0;
+    width: 440px;
+    height: 480px;
     display: flex;
     justify-content: center;
     align-items: center;
+    perspective: 1200px;
     margin: 0 auto;
+}
+
+.vh3-avatar-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    z-index: 10;
+    transform-style: preserve-3d;
+    transition: transform 0.25s cubic-bezier(0.1, 0.5, 0.3, 1);
+    animation: floatImg 5s infinite ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vh3-avatar-img {
+    width: 100%;
+    border-radius: 300px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(0, 131, 239, 0.3));
+}
+
+/* @keyframes floatImg {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+} */
+
+.avatar-glow.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0, 131, 239, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
+}
+
+.energy-glow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 50px;
+    background: radial-gradient(ellipse, rgba(0, 131, 239, 0.25) 0%, transparent 70%);
+    filter: blur(20px);
+}
+
+
+@keyframes corePulse {
+    from {
+        transform: scale(0.9);
+        box-shadow: 0 0 10px rgba(0, 131, 239, 0.2);
+    }
+
+    to {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 131, 239, 0.6);
+    }
+}
+
+/* Base */
+.bot-base {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: #e0e4e8;
+    clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+    border-radius: 0 0 20px 20px;
+}
+
+.jet-glow {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(0, 131, 239, 0.3) 0%, transparent 70%);
+    filter: blur(10px);
+    animation: jetFlicker 0.1s infinite alternate;
+}
+
+@keyframes jetFlicker {
+    from {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+    }
 }
 
 .v3-ring {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
+    z-index: 1;
 }
 
 .v3-ring.v3-outer {
-    width: 380px;
-    height: 380px;
-    border: 3px solid rgba(0, 160, 255, 0.15);
-    box-shadow: 0 0 25px rgba(0, 150, 255, 0.1), inset 0 0 25px rgba(0, 150, 255, 0.05);
-    animation: ho-spin 20s linear infinite;
+    width: 440px;
+    height: 440px;
+    border: 3px solid #0083ef;
+    box-shadow: 0 0 30px rgba(0, 131, 239, 0.2), inset 0 0 30px rgba(0, 131, 239, 0.1);
+    animation: ho-spin 25s linear infinite;
 }
 
 .v3-ring.v3-inner {
-    width: 330px;
-    height: 330px;
+    width: 380px;
+    height: 380px;
     border: 4px solid #00aaff;
-    box-shadow: 0 0 35px #00aaff, inset 0 0 35px #00aaff;
-    animation: ho-spin 15s linear infinite reverse;
+    background: url('/ai_neural_ring_bg.png') center/cover no-repeat;
+    box-shadow: 0 0 40px #00aaff, inset 0 0 40px #00aaff;
+    animation: ho-spin 20s linear infinite reverse;
+    opacity: 0.4;
+    mix-blend-mode: screen;
 }
 
-.vh3-avatar img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 50%;
-    z-index: 5;
-    box-shadow: 0 0 50px rgba(0, 150, 255, 0.4);
-}
+
+
 
 /* Playlist Side */
 .vh3-playlist {
@@ -4105,119 +4245,132 @@ section {
 }
 
 /* Arc Staggering - same arc as image */
-.vh3-pill:nth-child(1) { transform: translateX(0px); }
-.vh3-pill:nth-child(2) { transform: translateX(30px); }
-.vh3-pill:nth-child(3) { transform: translateX(45px); }
-.vh3-pill:nth-child(4) { transform: translateX(30px); }
-.vh3-pill:nth-child(5) { transform: translateX(0px); }
+.vh3-pill:nth-child(1) {
+    margin-left: 0px;
+}
 
-/* ==========================================
-   PILL — 100% image match
-   Dark navy | neon blue border | glass look
-   ========================================== */
+.vh3-pill:nth-child(2) {
+    margin-left: 30px;
+}
+
+.vh3-pill:nth-child(3) {
+    margin-left: 45px;
+}
+
+.vh3-pill:nth-child(4) {
+    margin-left: 30px;
+}
+
+.vh3-pill:nth-child(5) {
+    margin-left: 0px;
+}
+
 .vh3-pill {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(3, 8, 30, 0.92);
-    border: 2px solid #1a5fff;
-    border-radius: 999px;
-    padding: 8px 14px 8px 8px;
+    gap: 14px;
+    background: rgba(0, 131, 239, 0.08);
+    /* Using #0083ef with alpha for glass tint */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 131, 239, 0.3);
+    border-radius: 100px;
+    padding: 14px 28px;
     cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow:
-        /* Outer neon glow */
-        0 0 8px rgba(30, 100, 255, 0.5),
-        0 0 20px rgba(20, 80, 255, 0.2),
-        /* Inner blue tint */
-        inset 0 0 12px rgba(30, 80, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     width: fit-content;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 0 15px rgba(0, 131, 239, 0.1);
 }
 
 .vh3-pill:hover {
-    border-color: #3a7fff;
-    background: rgba(5, 15, 50, 0.95);
+    transform: translateX(12px) scale(1.03);
+    background: rgba(0, 131, 239, 0.15);
+    border-color: #0083ef;
     box-shadow:
-        0 0 12px rgba(50, 130, 255, 0.65),
-        0 0 30px rgba(30, 100, 255, 0.3),
-        inset 0 0 15px rgba(30, 80, 255, 0.2);
+        0 0 40px rgba(0, 131, 239, 0.25),
+        inset 0 0 20px rgba(0, 131, 239, 0.2);
 }
 
 .vh3-pill.active {
-    border-color: #4a90ff;
-    background: rgba(5, 15, 50, 0.95);
+    background: rgba(0, 131, 239, 0.2);
+    border-color: #0083ef;
+    border-width: 1.5px;
     box-shadow:
-        0 0 15px rgba(60, 140, 255, 0.75),
-        0 0 35px rgba(30, 100, 255, 0.35),
-        inset 0 0 18px rgba(30, 80, 255, 0.25);
+        0 0 50px rgba(0, 131, 239, 0.4),
+        inset 0 0 30px rgba(0, 131, 239, 0.3);
 }
 
+
+
 /* ================================================
-   PLAY CIRCLE — small, dark, thin blue ring
+   PLAY CIRCLE — Black bg, white border ring (Figma exact)
    ================================================ */
 .vh3-play-circle {
-    width: 30px;
-    height: 30px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    background: rgba(5, 10, 35, 0.95);
-    border: 1.5px solid #4488ff;
+    background: rgb(10 10 12 / 80%);
+    border: 2px solid #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #aaccff;
-    transition: all 0.25s;
+    color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow:
-        0 0 6px rgba(50, 120, 255, 0.4),
-        inset 0 0 6px rgba(20, 60, 200, 0.3);
+        0 0 15px rgba(0, 131, 239, 0.40);
+    z-index: 2;
+    position: relative;
 }
 
 .vh3-pill:hover .vh3-play-circle,
 .vh3-pill.active .vh3-play-circle {
-    border-color: #66aaff;
-    color: #ffffff;
+    border-color: #ffffff;
+    background: rgba(0, 0, 0, 0.90);
     box-shadow:
-        0 0 10px rgba(80, 160, 255, 0.6),
-        inset 0 0 8px rgba(40, 100, 220, 0.4);
+        0 0 20px rgba(0, 131, 239, 0.55);
 }
 
 /* ================================================
-   WAVEFORM — dense bars, bright blue-cyan, image-match
+   WAVEFORM — Pure white bars, Figma exact
    ================================================ */
 .vh3-wave {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2px;
-    height: 34px;
-    width: 155px;
-    margin: 0 2px;
+    height: 36px;
+    width: 140px;
+    margin: 0 4px;
     flex-shrink: 0;
 }
 
 .vh3-bar {
-    width: 2px;
-    background: #1a88ff;
+    width: 2.5px;
+    background: rgba(255, 255, 255, 0.80);
     border-radius: 2px;
-    box-shadow: 0 0 4px rgba(30, 130, 255, 0.7);
     transition: height 0.12s ease-out;
     min-height: 3px;
 }
 
 /* ================================================
-   TRACK TEXT — white title, muted subtitle
+   TRACK TEXT — white title, muted subtitle (Figma)
    ================================================ */
 .vh3-text {
     display: flex;
     flex-direction: column;
     text-align: left;
-    min-width: 110px;
+    min-width: 120px;
 }
 
 .vh3-title {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 3px;
@@ -4227,11 +4380,11 @@ section {
 
 .vh3-sub {
     font-family: var(--font-body);
-    font-size: 10px;
-    color: rgba(160, 190, 230, 0.6);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.65);
     line-height: 1.4;
     white-space: normal;
-    max-width: 120px;
+    max-width: 140px;
 }
 
 .vh3-pill.active .vh3-title {
@@ -4240,14 +4393,76 @@ section {
 
 /* Responses for Mobile */
 @media (max-width: 991px) {
+    .vh3-section {
+        padding: 40px 0 70px;
+    }
+
     .vh3-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
+    /* Text column comes first on mobile */
+    .vh3-text-col {
+        order: 1;
+        padding-left: 0;
+        text-align: center;
+        align-items: center;
+    }
+
+    .vh3-massive-text {
+        font-size: 38px;
+        text-align: center;
+        letter-spacing: -1px;
+    }
+
+    /* Player column second */
     .vh3-player-col {
+        order: 2;
         flex-direction: column;
         align-items: center;
+    }
+
+    .vh3-ai-avatar-container {
+        width: 280px;
+        height: 280px;
+        margin-bottom: 40px;
+    }
+
+    .v3-ring.v3-outer {
+        width: 280px;
+        height: 280px;
+    }
+
+    .v3-ring.v3-inner {
+        width: 240px;
+        height: 240px;
+    }
+
+    .vh3-avatar-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .vh3-features-pills {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .vh3-playlist {
+        width: 100%;
+        max-width: 500px;
+        margin-left: 0;
+        align-items: center;
+    }
+
+    /* Remove arc stagger on tablet */
+    .vh3-pill:nth-child(1),
+    .vh3-pill:nth-child(2),
+    .vh3-pill:nth-child(3),
+    .vh3-pill:nth-child(4),
+    .vh3-pill:nth-child(5) {
+        margin-left: 0;
     }
 
     .vh3-text {
@@ -4259,11 +4474,6 @@ section {
         font-size: 12px;
     }
 
-    .vh3-playlist {
-        width: 100%;
-        max-width: 500px;
-    }
-
     .vh3-wave {
         justify-content: flex-end;
         margin-right: 15px;
@@ -4271,28 +4481,106 @@ section {
 }
 
 @media (max-width: 600px) {
-    .vh3-avatar {
-        width: 200px;
-        height: 200px;
+    .vh3-section {
+        padding: 30px 0 50px;
+    }
+
+    .vh3-massive-text {
+        font-size: 28px;
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+    }
+
+    .vh3-ai-avatar-container {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 30px;
+    }
+
+    .v3-ring.v3-outer {
+        width: 220px;
+        height: 220px;
     }
 
     .v3-ring.v3-inner {
-        width: 170px;
-        height: 170px;
+        width: 180px;
+        height: 180px;
     }
 
-    .vh3-avatar img {
-        width: 150px;
-        height: 150px;
+    .vh3-avatar-img {
+        width: 160px;
+        height: 160px;
     }
 
     .vh3-pill {
-        padding: 10px 15px;
+        padding: 8px 12px 8px 8px;
+        gap: 8px;
+        max-width: 95vw;
+    }
+
+    .vh3-wave {
+        width: 100px;
+    }
+
+    .vh3-play-circle {
+        width: 28px;
+        height: 28px;
     }
 
     .vh3-sub {
         display: none;
     }
 
-    /* Hide sub on very small devices */
+    .vh3-title {
+        font-size: 11px;
+    }
+
+    /* Remove footer logo on mobile */
+    .footer-ai .logo-ai {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .vh3-massive-text {
+        font-size: 24px;
+    }
+
+    .vh3-ai-avatar-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    .v3-ring.v3-outer {
+        width: 160px;
+        height: 160px;
+    }
+
+    .v3-ring.v3-inner {
+        width: 135px;
+        height: 135px;
+    }
+
+    .vh3-avatar img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .vh3-wave {
+        width: 70px;
+    }
+
+    .vh3-pill {
+        padding: 7px 10px 7px 7px;
+    }
+}
+
+@keyframes ho-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
