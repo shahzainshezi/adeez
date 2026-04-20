@@ -4584,3 +4584,74 @@ section {
         transform: rotate(360deg);
     }
 }
+
+/* ================================================
+   MOBILE UI CUSTOM FIXES (LATEST)
+   ================================================ */
+
+/* Hide Mobile CTA on Desktop */
+@media (min-width: 769px) {
+    .mobile-cta-only {
+        display: none !important;
+    }
+}
+
+/* Mobile Adjustments (Header & Footer) */
+@media (max-width: 768px) {
+    /* Header Mobile Menu Button */
+    .mobile-cta-only {
+        display: flex !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+        order: 10;
+        justify-content: center;
+        background: var(--accent-blue) !important; /* Make it more prominent in mobile menu */
+    }
+    
+    .mobile-cta-only span {
+        width: 100% !important;
+        text-align: center;
+        padding: 12px 20px !important;
+        background: transparent !important;
+    }
+
+    /* Footer Contact Center Alignment */
+    .footer-right {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 40px !important;
+    }
+
+    .footer-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .footer-link-list {
+        align-items: center !important;
+        text-align: center !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .footer-link-list li {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 12px !important;
+    }
+
+    .contact-list a {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    .footer-socials {
+        justify-content: center !important;
+    }
+}
