@@ -24,8 +24,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/Adeeze loader icon-09-11.svg">
+    <link rel="icon" type="image/svg+xml" href="./Adeeze loader icon-09-11.svg">
     <link rel="stylesheet" href="./agency-ultra.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body class="dark-theme">
@@ -34,7 +35,7 @@
     <nav class="navbar-ai">
         <div class="container nav-ai-flex">
             <a href="#" class="logo-ai">
-                <img src="/Adeeze-07.svg" alt="Adeeze-07 Logo">
+                <img src="./Adeeze-07.svg" alt="Adeeze-07 Logo">
             </a>
             <div class="nav-links-ai">
                 <a href="#architecture">Architecture</a>
@@ -461,7 +462,7 @@
                     <!-- Card 1 -->
                     <div class="impact-card align-up" onclick="toggleImpactVideo(this)">
                         <div class="impact-badge"><i data-lucide="zap"></i> Featured</div>
-                        <video class="impact-video" src="/videos/AI Ad.mp4" autoplay loop muted playsinline></video>
+                        <video class="impact-video" src="./videos/AI Ad.mp4" autoplay loop muted playsinline></video>
                         <div class="play-btn-center">
                             <i data-lucide="volume-2" fill="currentColor"></i>
                         </div>
@@ -473,7 +474,7 @@
 
                     <!-- Card 2 -->
                     <div class="impact-card align-down" onclick="toggleImpactVideo(this)">
-                        <video class="impact-video" src="/videos/AI Ad 2.mp4" autoplay loop muted playsinline></video>
+                        <video class="impact-video" src="./videos/AI Ad 2.mp4" autoplay loop muted playsinline></video>
                         <div class="play-btn-center">
                             <i data-lucide="volume-2" fill="currentColor"></i>
                         </div>
@@ -485,7 +486,7 @@
 
                     <!-- Card 3 -->
                     <div class="impact-card align-up" onclick="toggleImpactVideo(this)">
-                        <video class="impact-video" src="/videos/AI Ad 3.mp4" autoplay loop muted playsinline></video>
+                        <video class="impact-video" src="./videos/AI Ad 3.mp4" autoplay loop muted playsinline></video>
                         <div class="play-btn-center">
                             <i data-lucide="volume-2" fill="currentColor"></i>
                         </div>
@@ -497,7 +498,7 @@
 
                     <!-- Card 4 -->
                     <div class="impact-card align-down" onclick="toggleImpactVideo(this)">
-                        <video class="impact-video" src="/videos/DIP AD Final.mp4" autoplay loop muted
+                        <video class="impact-video" src="./videos/DIP AD Final.mp4" autoplay loop muted
                             playsinline></video>
                         <div class="play-btn-center">
                             <i data-lucide="volume-2" fill="currentColor"></i>
@@ -510,7 +511,7 @@
 
                     <!-- Card 5 -->
                     <div class="impact-card align-up" onclick="toggleImpactVideo(this)">
-                        <video class="impact-video" src="/videos/Dip Ad 7 part 2.mp4" autoplay loop muted
+                        <video class="impact-video" src="./videos/Dip Ad 7 part 2.mp4" autoplay loop muted
                             playsinline></video>
                         <div class="play-btn-center">
                             <i data-lucide="volume-2" fill="currentColor"></i>
@@ -523,7 +524,7 @@
 
                     <!-- Card 6 -->
                     <div class="impact-card align-down" onclick="toggleImpactVideo(this)">
-                        <video class="impact-video" src="/videos/James Ad.mp4" autoplay loop muted playsinline></video>
+                        <video class="impact-video" src="./videos/James Ad.mp4" autoplay loop muted playsinline></video>
                         <div class="play-btn-center">
                             <i data-lucide="volume-2" fill="currentColor"></i>
                         </div>
@@ -555,7 +556,7 @@
                             
                             <!-- The Original Robot Image -->
                             <div class="vh3-avatar-wrapper" id="ai-robot-head">
-                                <img src="/ai_headphone_bot.png" alt="AI Agent" class="vh3-avatar-img">
+                                <img src="./ai_headphone_bot.png" alt="AI Agent" class="vh3-avatar-img">
                                 <div class="avatar-glow overlay"></div>
                             </div>
                             
@@ -1267,11 +1268,11 @@
 
         // V3 AI VOICE PLAYER LOGIC
         const vpTracks = [
-            { id: "01", title: "Call Recording 01", sub: "Autonomous AI Lead Qualification", file: "/voice notes/1-1.WAV" },
-            { id: "02", title: "Call Recording 02", sub: "Multilingual Customer Support", file: "/voice notes/2-1.WAV" },
-            { id: "03", title: "Call Recording 03", sub: "Real-time Sales Appointment", file: "/voice notes/3-1.WAV" },
-            { id: "04", title: "Call Recording 04", sub: "Hyper-realistic Voice Conversion", file: "/voice notes/4-1.WAV" },
-            { id: "05", title: "Call Recording 05", sub: "Instant Post-Capture Calling", file: "/voice notes/5-1.WAV" }
+            { id: "01", title: "Call Recording 01", sub: "Autonomous AI Lead Qualification", file: "./voice notes/1-1.WAV" },
+            { id: "02", title: "Call Recording 02", sub: "Multilingual Customer Support", file: "./voice notes/2-1.WAV" },
+            { id: "03", title: "Call Recording 03", sub: "Real-time Sales Appointment", file: "./voice notes/3-1.WAV" },
+            { id: "04", title: "Call Recording 04", sub: "Hyper-realistic Voice Conversion", file: "./voice notes/4-1.WAV" },
+            { id: "05", title: "Call Recording 05", sub: "Instant Post-Capture Calling", file: "./voice notes/5-1.WAV" }
         ];
 
         let vpCurrentTrackIndex = -1; // No track active by default
@@ -1485,7 +1486,13 @@
         }
     </script>
 
-    <script type="module" src="/agency-logic.js"></script>
+    <script>
+        // Fallback icon initialization
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+    <script type="module" src="./agency-logic.js"></script>
 </body>
 
 </html>
