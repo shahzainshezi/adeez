@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // --- SET YOUR EMAIL HERE ---
-    $to = "hello@adeeze.com"; 
+    $to = "sales@adeeze.com"; 
     $subject = "New Lead from Adeeze Website";
 
     // Get form data
