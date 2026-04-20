@@ -1440,8 +1440,8 @@
             startImpactSlider();
         }
 
-        // FORM SUBMISSION TO GOOGLE SHEETS
-        const scriptURL = 'https://script.google.com/macros/s/AKfycby7sa5pSl5x03-79o3L8wHhlDKu4hp0HcPz2ujlI1sTBGNZFNYK2E22hLz8vBnyeN_6mg/exec';
+        // FORM SUBMISSION TO PHP (HOSTINGER JUGAR)
+        const scriptURL = './send-email.php';
         const formNodes = document.getElementById('lead-form');
         const thankYou = document.getElementById('form-thank-you');
         const submitBtn = document.getElementById('submit-btn-form');
@@ -1452,32 +1452,23 @@
 
                 // Button state change
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<span>UPLOADING DATA...</span>';
+                submitBtn.innerHTML = '<span>INITIALIZING...</span>';
                 submitBtn.style.opacity = '0.7';
                 submitBtn.disabled = true;
 
                 fetch(scriptURL, { method: 'POST', body: new FormData(formNodes) })
                     .then(response => {
-                        console.log('Success!', response);
-
-                        // Hide form and show Thank You
-                        formNodes.style.display = 'none';
-                        thankYou.style.display = 'block';
-
-                        formNodes.reset();
-
-                        // Reset back to form after some time if needed (e.g. 8 seconds)
-                        setTimeout(() => {
-                            thankYou.style.display = 'none';
-                            formNodes.style.display = 'flex';
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.style.opacity = '1';
-                            submitBtn.disabled = false;
-                        }, 8000);
+                        if (response.ok) {
+                            formNodes.style.display = 'none';
+                            thankYou.style.display = 'block';
+                            formNodes.reset();
+                        } else {
+                            throw new Error('Network response was not ok.');
+                        }
                     })
                     .catch(error => {
                         console.error('Error!', error.message);
-                        alert('Error connecting to neural network. Please try again.');
+                        alert('Neural connection failed. Please try again.');
                         submitBtn.innerHTML = originalText;
                         submitBtn.style.opacity = '1';
                         submitBtn.disabled = false;
